@@ -1,0 +1,10 @@
+fCompareCol "Name1", "Name2", "Result"
+
+Function fCompareCol(coloum1, coloum2, coloum3)
+'	strRowCount = DataTable.GetRowCount
+	if Trim(Ucase(DataTable.Value(coloum1, dtLocalSheet))) = Trim(Ucase(DataTable.Value(coloum2, dtLocalSheet))) Then
+		DataTable(coloum3, dtLocalSheet) = "True"
+	Else
+		DataTable(coloum3, dtLocalSheet) = "False"		
+	End If
+End Function

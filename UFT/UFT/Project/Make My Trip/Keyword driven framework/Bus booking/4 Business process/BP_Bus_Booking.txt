@@ -1,0 +1,13 @@
+Business Process Of Bus Booking:
+BP01: Launch Internet Explore.
+BP02: Open MakeMyTrip as http://www.makemytrip.com/
+BP03: Click on Bus Link
+BP04: Fill all Sections Like From,To,Departure Date and Email as Optional
+BP05: Click Search Buses Link
+BP06: Click First Select Bus Link
+BP07: Select Seat 
+BP08: Click On Continue Link
+BP09: Fill All Sections of Traveller Details as FirstName, LastName, Age, EmailId, MobileNo.
+BP10: Click On Continue To Payment Link
+BP11: Close Application
+ 

@@ -1,0 +1,10 @@
+Set objSapPortal = Browser("Rockwell Automation Login").SAPPortal("Welcome - Rockwell Automation")
+
+ 
+var = fLogout(objSapPortal,"")
+If  var Then
+	fReportSuccess "Step: Logout Pass", "Logged out successfully"
+	Browser("Rockwell Automation Login").Close	
+Else
+	fReportFail "Step: Logout Pass", "Logged out not successful"
+End If

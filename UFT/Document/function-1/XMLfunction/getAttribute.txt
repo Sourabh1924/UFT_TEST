@@ -1,0 +1,38 @@
+'--------------------------------------------------  getAttribute()  ---------------------------
+
+P_XmlFile = "C:\Documents and Settings\yogesh\Desktop\MyTest\XMLTest\XMLFunctions\IDD0822_Payload.XML"
+pElemPath = "//ns0:PROJECT/FIELDDATA/PROJECTFIELDDATA/DATA[@ID='7AD426281B684123A88CFEC080FEC3D6']/FIELD"
+
+Set dicVal = CompareXmlValue(P_XmlFile,pElemPath)
+arrDicKeys = dicVal.keys
+arrDicItems = dicVal.items
+For i=0 to dicVal.count - 1
+	print arrDicKeys(i) & "==" &  arrDicItems(i)
+Next
+
+Function CompareXmlValue(P_XmlFile,pElemPath)
+Set dicObj = CreateObject("Scripting.Dictionary")
+set objXML = CreateObject("Microsoft.XMLDOM")
+	objXML.async = "false"
+	'-Verifying the file is loaded or not
+	If Not objXML.Load(P_XmlFile) Then
+		MsgBox objXML.parseError.reason
+	Else
+		'-Retrieveing the whole tagname
+		Set objRootNodeList = objXML.DocumentElement.SelectNodes(pElemPath)
+		n_states = objRootNodeList.length
+			For i = 0 to n_states - 1
+				set state = objRootNodeList.item(i)
+				Attr = state.getAttribute("NAME")
+				AttrText = state.text
+				If Not isNull(Attr) Then
+                    'Print Attr
+					'Print AttrText
+					dicObj.Add Attr,AttrText
+				End If
+			Next
+			Set CompareXmlValue = dicObj
+	End if
+End Function
+
+'-----------------------------------------------------------------------------------------------------

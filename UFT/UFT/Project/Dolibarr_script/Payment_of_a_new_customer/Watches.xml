@@ -1,0 +1,6 @@
+﻿<Properties>
+  <WatchEntry0 value="D_link" />
+  <WatchEntry1 value="idateval" />
+  <WatchEntry2 value="environment.Value(&quot;Amount&quot;)" />
+  <WatchEntry3 value="amount" />
+</Properties>

@@ -1,0 +1,5 @@
+﻿<Properties>
+  <WatchEntry0 value="arrStr(i)" />
+  <WatchEntry1 value="lcase(trim(arrStr(i)))" />
+  <WatchEntry2 value="mid(word,1,1)" />
+</Properties>

@@ -1,0 +1,13 @@
+Function addMinute(strTime)
+   'strTime="12-31-2013 11:59PM"
+   newTime=FormatDateTime(DateAdd("n",1,strTime),0)
+ 	If  len(strTime) > len(newTime) Then
+		newTime=Replace(newTime,"/","-")
+		newTime=newTime & " 00:00AM"
+		else
+		 newTime=Replace(newTime,"/","-")
+		 newTimeArr=split(newTime,":")
+		 newTime=Replace(newTime,":"&newTimeArr(2),""&right(newTimeArr(2),2))
+	End If
+   MsgBox newTime
+End Function

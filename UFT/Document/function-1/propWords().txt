@@ -1,0 +1,13 @@
+Function propWords()
+   strVar="maRkTAYLOR"
+   wordArr=split(strVar,",")
+ For i=0 to UBound(wordArr)
+		realChar=UCase( Left(wordArr(i),1)) & LCase(Right(wordArr(i),len(wordArr(i))-1))
+		If isEmpty(realStr)  Then
+			realStr=realChar
+			else
+			realStr=realStr & "," & realChar
+		End If
+   Next
+   MsgBox realStr
+End Function

@@ -1,0 +1,5 @@
+﻿<Properties>
+  <WatchEntry0 value="counter" />
+  <WatchEntry1 value="ubound(str)" />
+  <WatchEntry2 value="counter = ubound(str)" />
+</Properties>

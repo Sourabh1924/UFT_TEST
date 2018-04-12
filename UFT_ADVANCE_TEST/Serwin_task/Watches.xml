@@ -1,0 +1,5 @@
+﻿<Properties>
+  <WatchEntry0 value="Rowvalue" />
+  <WatchEntry1 value="Colvalue" />
+  <WatchEntry2 value="sheet.cells(cint(Rowvalue),cint(Colvalue)).value" />
+</Properties>

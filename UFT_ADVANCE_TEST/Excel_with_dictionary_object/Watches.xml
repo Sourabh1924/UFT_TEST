@@ -1,0 +1,9 @@
+﻿<Properties>
+  <WatchEntry0 value="Product_code" />
+  <WatchEntry1 value="cstr(Dobj.Item(record))" />
+  <WatchEntry2 value="Prize" />
+  <WatchEntry3 value="Product_name" />
+  <WatchEntry4 value="mysheet.cells(Account_row,record)" />
+  <WatchEntry5 value="mysheet.cells(Account_row,record)" />
+  <WatchEntry6 value="record" />
+</Properties>

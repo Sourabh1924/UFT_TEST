@@ -1,0 +1,1 @@
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body><GetFlightOrdersResponse xmlns="HP.SOAQ.SampleApp"><GetFlightOrdersResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance" /></GetFlightOrdersResponse></s:Body></s:Envelope>

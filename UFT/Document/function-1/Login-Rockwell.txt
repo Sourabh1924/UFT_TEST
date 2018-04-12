@@ -1,0 +1,67 @@
+Set objPage =Browser("Rockwell Automation Login").Page("Rockwell Automation Login")
+    Set ObjSapPortal = Browser("Rockwell Automation Login").SAPPortal("Welcome - Rockwell Automation")
+	Set objSAPPage = Browser("Rockwell Automation Login").Page("Welcome - Rockwell Automation")   	
+  	
+	p_Link1 = "Home"
+    p_Link2 = "Systems"
+    p_Link3 = "ECC"
+   
+    
+    StrError= ""
+
+strUserName = DataTable.Value("UserName",dtGlobalSheet)
+strPassword = DataTable.Value("Password",dtGlobalSheet)
+strEnv = DataTable.Value("Env",dtGlobalSheet)
+
+  '--------------------------------------------- Login to Portal ----------------------------------------------------
+
+    blnstatus = fLogin (objPage,strUserName,strPassword,strEnv,StrError)
+    
+    If  blnstatus= True  Then
+    
+        fReportSuccess "Step: Login to Portal","Logged on successfully"
+        
+    Else 
+            
+        fReportFail "Step: Login to Portal","Login Failed"&StrError
+        ExitTest          
+    End If
+
+'---------------------------------------------- Navigation to Home -> Systems ----------------------------------------------
+
+    Wait 2
+    
+    blnstatus= fNavigation(ObjSapPortal, p_Link1, p_Link2, StrError)
+    Wait 3
+    If  blnstatus= True  Then
+        fReportSuccess "Step: Naviagte to "&p_Link1," Navigated to "&p_Link1
+        fReportSuccess "Step: Naviagte to "&p_Link2," Navigated to "&p_Link2
+    Else 
+            blnstatus= fNavigation(objSAPPage, p_Link1, p_Link2, StrError)
+            If blnstatus = False Then
+                fReportFail "Step:  Naviagte to "&p_Link1," Navigate to "&p_Link1&" Failed "&StrError
+                fReportFail "Step:  Naviagte to "&p_Link2," Navigate to "&p_Link2&" Failed "&StrError
+                ExitTest
+            Else
+                 fReportSuccess "Step: Naviagte to "&p_Link1," Navigated to "&p_Link1
+        		 fReportSuccess "Step: Naviagte to "&p_Link2," Navigated to "&p_Link2        		 
+            End If
+    End If
+    
+    blnstatus = ""
+    StrError = ""
+    blnstatus = fClickLink(ObjSapPortal, p_Link3, StrError)
+    
+	 If  blnstatus= True  Then
+        fReportSuccess "Step: Naviagte to "&p_Link3," Navigated to "&p_Link3
+       
+    Else 
+            blnstatus = fClickLink(objSAPPage, p_Link3, StrError)
+            If blnstatus = False Then
+                fReportFail "Step:  Naviagte to "&p_Link3," Navigate to "&p_Link3&" Failed "&StrError               
+                ExitTest
+            Else
+                 fReportSuccess "Step: Naviagte to "&p_Link3," Navigated to "&p_Link3       		    		 
+            End If
+    End If
+   Wait 10 

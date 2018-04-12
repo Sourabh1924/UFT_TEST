@@ -1,0 +1,15 @@
+BP-01: Go to http://www.makemytrip.com
+BP-02: Click on "Train"
+BP-03: Click on From and Type "Departure City".
+BP-04: Click on To and Type "Destination City" .
+BP-05: Click on Departure date Select "Given date". 
+BP-06: Select class "Second AC".
+BP-07: Click on "Search Train"
+BP-07: Book the First Train.
+BP-07: Select Number of  Adult Passenger "1".
+BP-07: Click on "Continue".
+BP-07: Fill the passenger details First name,Last name,Gender,age and country were he/she belong.
+BP-07: Type Email address.
+BP-07: Type Mobile number.
+BP-07: Type IRCTC Username. cre
+BP-07: Click on "Submit".

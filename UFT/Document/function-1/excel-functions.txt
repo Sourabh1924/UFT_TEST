@@ -1,0 +1,97 @@
+'//////////////////////////////////                 Function fGetUsrData(objxl,objUsrDic,strSheetType,strError)             ////////////////////////////////////////
+
+Function fGetUsrData(objxl,objUsrDic,strSheetType,Byref strError)
+
+        '---------Variable Declaration
+		Dim i
+		Dim strSheetName
+
+		'----------- Opening Excel Workbook and Activesheet
+		objxl.Workbooks.Open "C:\Documents and Settings\yogesh\Desktop\MyTest\test1.xls"
+		objxl.Application.Visible = true
+		set strSheetName = objxl.ActiveWorkbook.Worksheets(strSheetType)
+		intCol=strSheetName.UsedRange.columns.count
+
+		'-----------Adding the Keys and Items to Dictionary Object.
+		For i=1 to intCol
+			   keyVal=strSheetName.cells(1,i).value
+			   itemVal=strSheetName.cells(2,i).value
+			   objUsrDic.Add keyVal,itemVal
+		Next
+
+		'------------Comparing Coloumn Count and Total Dictionary object Value and Passing Boolean Value
+		If intCol = objUsrDic.count Then
+			fGetUsrData = True
+			else
+			fGetUsrData = False
+			strError = "Data Error: All Fields Value Should be In Equal Range in " & strSheetName
+		End If
+
+		'----------saving and closing the Excel file 
+		objxl.ActiveWorkbook.Save
+		objxl.ActiveWorkbook.close
+		objxl.Application.Quit
+		Set sheetName=nothing
+		Set objxl=nothing
+
+End Function
+
+'//////////////////////////////////////       Function fGetInputData(objxl,objDocIdDic,objPMODic,objInitialDic,objTextDic,strError)    /////////////////////////////////
+
+Function fGetInputData(objxl,objDocIdDic,objPMODic,objInitialDic,objTextDic,strSheetType,Byref strError)
+
+        '---------Variable Declaration
+		Dim i,j
+		Dim intRow
+		Dim intCol
+		Dim intTotalDocId
+		Dim strSheetName
+        '----------- Opening Excel Workbook and Activesheet
+		objxl.Workbooks.Open "C:\Documents and Settings\yogesh\Desktop\MyTest\test.xls"
+		objxl.Application.Visible = false
+		set strSheetName = objxl.ActiveWorkbook.Worksheets(strSheetType)
+
+        '----------Counting Number of Used Rows and Coloumns
+		intCol =strSheetName.UsedRange.columns.count
+		intRow =strSheetName.UsedRange.Rows.count
+		
+		'----------Start Filling Populated Excel Data into Dictionaries
+		For i=2 to intRow
+			For j=1 to intCol
+				keyVal=i
+				itemVal=strSheetName.cells(i,j).value
+				
+					If j=1 Then
+						objDocIdDic.Add keyVal,itemVal
+					End If
+					If j=2 Then
+						objPMODic.Add keyVal,itemVal
+					End If
+					If j=3 Then
+						objInitialDic.Add keyVal,itemVal
+					End If
+					If j=4 Then
+						objTextDic.Add keyVal,itemVal
+					End If	
+				
+			Next
+		Next
+
+		'------------Comparing Each of Dictionaries' Items and Passing Boolean Value
+		intTotalDocId = objDocIdDic.count
+		If intTotalDocId = objPMODic.Count and intTotalDocId = objInitialDic.count and intTotalDocId = objTextDic.count Then
+			fGetInputData = True
+			else
+			fGetInputData = False
+			strError = "Data Error: All Fields Value Should be In Equal Range in " & strSheetName
+		End If		
+		
+		'-------saving and closing the Excel file 
+		objxl.ActiveWorkbook.Save
+		objxl.ActiveWorkbook.close
+		objxl.Application.Quit
+		Set sheetName=nothing
+		Set objxl=nothing
+
+  End Function
+

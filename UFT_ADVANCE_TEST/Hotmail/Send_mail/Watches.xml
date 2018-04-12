@@ -1,0 +1,6 @@
+﻿<Properties>
+  <WatchEntry0 value="TT_time" />
+  <WatchEntry1 value="To_" />
+  <WatchEntry2 value="Browser(&quot;Sign in to your Microsoft&quot;).Page(&quot;Mail - memo chakroborty_2&quot;).WebElement(&quot;vishdas@gmail.com&quot;).GetROProperty(&quot;innertext&quot;)" />
+  <WatchEntry3 value="To_ = Home1_obj.WebElement(&quot;vishdas@gmail.com&quot;).GetROProperty(&quot;innertext&quot;)" />
+</Properties>

@@ -1,0 +1,14 @@
+Notepad is open
+Notepad is close
+Paint is open
+Paint is close
+Excel is open
+Excel is close
+Microsoft Word is open
+Microsoft Word is close
+Google is open
+Google is close
+Makemytrip is open
+Makemytrip is close
+Facebook is open
+Facebook is close

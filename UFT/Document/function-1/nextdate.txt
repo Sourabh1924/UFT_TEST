@@ -1,0 +1,9 @@
+ for adding next date
+Function getNextDate()                                                   
+  dateToday = Date                                                    'Today's date
+  NewDate = DateAdd("d",1,dateToday)  '03/26/2014 'Tomorrow's date 
+  thisMonth = month(NewDate)                                 'Get the month part
+  nextDay = day(Newdate)                                                'Get the day part
+  
+End Function
+ 

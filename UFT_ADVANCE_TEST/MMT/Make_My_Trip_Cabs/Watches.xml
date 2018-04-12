@@ -1,0 +1,5 @@
+﻿<Properties>
+  <WatchEntry0 value="vday" />
+  <WatchEntry1 value="child_obj.count" />
+  <WatchEntry2 value="child_obj(i).getroproperty(&quot;innertext&quot;)" />
+</Properties>

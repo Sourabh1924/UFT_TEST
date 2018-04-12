@@ -1,0 +1,5 @@
+﻿<Properties>
+  <WatchEntry0 value="SourceFolderPath&amp;TargetZipFileName" />
+  <WatchEntry1 value="SourceFolderPath" />
+  <WatchEntry2 value="TargetZipFileName" />
+</Properties>

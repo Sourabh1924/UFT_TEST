@@ -1,0 +1,120 @@
+2017-03-08 23:24:43,252 [16] INFO  - Step 'Start' : Step 'Start' started
+2017-03-08 23:24:43,283 [16] INFO  - Step 'Start' ended successfully
+2017-03-08 23:24:43,284 [16] INFO  - Step 'Test Flow' : Step 'Test Flow' started
+2017-03-08 23:24:43,285 [16] INFO  - Step 'Iteration 1' : Step 'Iteration 1' started
+2017-03-08 23:24:43,287 [16] INFO  - Step 'GetFlights' : Step 'GetFlights' started
+2017-03-08 23:24:43,295 [16] INFO  - 
+Request:
+
+<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+  <Body>
+    <GetFlights xmlns="HP.SOAQ.SampleApp">
+      <DepartureCity>Denver</DepartureCity>
+      <ArrivalCity>London</ArrivalCity><FlightDate>2017-03-23T00:00:00+05:30</FlightDate>
+    </GetFlights>
+  </Body>
+</Envelope>
+
+2017-03-08 23:24:43,308 [16] INFO  - URL: http://localhost:8000/HPFlights_SOAP
+2017-03-08 23:24:43,318 [16] INFO  - Returning the response to the previous channel
+2017-03-08 23:24:43,321 [16] INFO  - 
+Response:
+
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <GetFlightsResponse xmlns="HP.SOAQ.SampleApp">
+      <GetFlightsResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+        <Flight>
+          <Airline>AA</Airline>
+          <ArrivalCity>London</ArrivalCity>
+          <ArrivalTime>04:23 PM</ArrivalTime>
+          <DepartureCity>Denver</DepartureCity>
+          <DepartureTime>09:12 AM</DepartureTime>
+          <FlightNumber>20254</FlightNumber>
+          <Price>112.2</Price>
+        </Flight>
+        <Flight>
+          <Airline>AA</Airline>
+          <ArrivalCity>London</ArrivalCity>
+          <ArrivalTime>01:23 PM</ArrivalTime>
+          <DepartureCity>Denver</DepartureCity>
+          <DepartureTime>06:12 AM</DepartureTime>
+          <FlightNumber>20258</FlightNumber>
+          <Price>112.2</Price>
+        </Flight>
+      </GetFlightsResult>
+    </GetFlightsResponse>
+  </s:Body>
+</s:Envelope>
+
+2017-03-08 23:24:43,335 [16] INFO  - Structural Validation: True
+2017-03-08 23:24:43,340 [16] INFO  - Step 'GetFlights' ended successfully
+2017-03-08 23:24:43,349 [16] INFO  - Step 'CreateFlightOrder' : Step 'CreateFlightOrder' started
+2017-03-08 23:24:43,351 [16] INFO  - 
+Request:
+
+<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/" xmlns:p1="http://www.w3.org/2001/XMLSchema-instance">
+  <Body>
+    <CreateFlightOrder xmlns="HP.SOAQ.SampleApp">
+      <FlightOrder>
+        <Class>First</Class>
+        <CustomerName>sss</CustomerName>
+        <DepartureDate>2017-03-23T00:00:00+05:30</DepartureDate>
+        <FlightNumber>20254</FlightNumber>
+        <NumberOfTickets>2</NumberOfTickets>
+      </FlightOrder>
+    </CreateFlightOrder>
+  </Body>
+</Envelope>
+
+2017-03-08 23:24:43,353 [16] INFO  - URL: http://localhost:8000/HPFlights_SOAP
+2017-03-08 23:24:43,518 [16] INFO  - Returning the response to the previous channel
+2017-03-08 23:24:43,521 [16] INFO  - 
+Response:
+
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <CreateFlightOrderResponse xmlns="HP.SOAQ.SampleApp">
+      <CreateFlightOrderResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+        <OrderNumber>201</OrderNumber>
+        <TotalPrice>224.4</TotalPrice>
+      </CreateFlightOrderResult>
+    </CreateFlightOrderResponse>
+  </s:Body>
+</s:Envelope>
+
+2017-03-08 23:24:43,537 [16] INFO  - Structural Validation: True
+2017-03-08 23:24:43,540 [16] INFO  - Step 'CreateFlightOrder' ended successfully
+2017-03-08 23:24:43,541 [16] INFO  - Step 'Report Message12' : Step 'Report Message12' started
+2017-03-08 23:24:43,547 [16] INFO  - Step 'Report Message12' : 201
+2017-03-08 23:24:43,553 [16] INFO  - Step 'DeleteFlightOrder' : Step 'DeleteFlightOrder' started
+2017-03-08 23:24:43,566 [16] INFO  - 
+Request:
+
+<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+  <Body>
+    <DeleteFlightOrder xmlns="HP.SOAQ.SampleApp">
+      <OrderNumber>201</OrderNumber>
+    </DeleteFlightOrder>
+  </Body>
+</Envelope>
+
+2017-03-08 23:24:43,568 [16] INFO  - URL: http://localhost:8000/HPFlights_SOAP
+2017-03-08 23:24:43,682 [16] INFO  - Returning the response to the previous channel
+2017-03-08 23:24:43,685 [16] INFO  - 
+Response:
+
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <DeleteFlightOrderResponse xmlns="HP.SOAQ.SampleApp">
+      <DeleteFlightOrderResult>true</DeleteFlightOrderResult>
+    </DeleteFlightOrderResponse>
+  </s:Body>
+</s:Envelope>
+
+2017-03-08 23:24:43,696 [16] INFO  - Structural Validation: True
+2017-03-08 23:24:43,701 [16] INFO  - Step 'DeleteFlightOrder' ended successfully
+2017-03-08 23:24:43,703 [16] INFO  - Step 'Iteration 1' ended successfully
+2017-03-08 23:24:43,706 [16] INFO  - Step 'Test Flow' ended successfully
+2017-03-08 23:24:43,708 [16] INFO  - Step 'End' : Step 'End' started
+2017-03-08 23:24:43,717 [16] INFO  - Step 'End' ended successfully

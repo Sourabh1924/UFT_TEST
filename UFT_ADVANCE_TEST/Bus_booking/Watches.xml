@@ -1,0 +1,6 @@
+﻿<Properties>
+  <WatchEntry0 value="row" />
+  <WatchEntry1 value="col" />
+  <WatchEntry2 value="data" />
+  <WatchEntry3 value="childobj.count" />
+</Properties>

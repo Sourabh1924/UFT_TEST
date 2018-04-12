@@ -1,0 +1,1 @@
+SAPGuiSession("Session").SAPGuiWindow("Business Workplace of").SAPGuiTree("TableTreeControl").SelectNode "RegExp:=Workplace:.*;Inbox;#3"

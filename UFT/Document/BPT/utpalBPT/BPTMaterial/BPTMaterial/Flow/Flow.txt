@@ -1,0 +1,54 @@
+1. Login Component
+1. Go to ALM
+2. Log into The project available for the training
+3. Go to the Business Components module
+4. Under the Businees Components tree, create a folder and name it "BPT Training"
+5. Go to Test Plan Module
+6. Under the test plan Module, create a folder and name it: "Manual Tests"
+7. Right click in the folder just created and select: "Create a New Component"
+8. The Component will be called: "Login"
+9. Under the manual implementation tab, create following steps for this component:
+   1. access to http http://96.226.128.114:11500/mtours/servlet/com.mercurytours.servlet.WelcomeServlet
+   2. Type your username
+   3. Type your Password
+   4. Click Sign-in
+10. Go to the Parameters Tab and then add two Parameters: Username(username) Password(password)
+11. Go to the Test Plan Tree and select the test that has been created, right click and select: "Convert to Component"
+12. Select the "BPT Training" component folder as destination for the component that we are going to create.
+13. Keep the same name for the new component: "Login"
+14. Go to the Business Component module
+15. Go to the BPT Training folder and then select the Login component.
+16. Go to the Parameters tab, select the password parameter input value and then click in the drop-down button to define the password as "encrypted".
+
+2. In the flght Finder Page Component
+create the steps to find an available flight:
+1. Choose the trip
+2. From the passangers drop-down button, select 2
+3. The departing from will be London
+4. Select a date to arrive in
+5. From the drop-down menu, select Paris
+6. Select Firs Class
+7. Select Pangea Airlines from the Airline menu
+8. Click COntinue
+
+3.Select Flight Component
+1.Select a Flight Available
+2. Click Continue
+
+4.Book a Flight Component
+1. Type your name in the First Name text box
+2. Type your Last Name in the Last name text box
+3. Type the card number
+4. Click "Secure Purchase"
+
+5. Flight Confirmation Component
+Once the flight has been booked and make sure the information is correct, click  on logout
+1.Click Log-out
+1. Click Continue
+
+Go to Test Plan
+1.Create a folder named Mercury Tours BPT
+2. Create a test as "businee process" type
+3. Go to "Test Script" tab and click "select components"
+4. Select the 5 components from the "Components training folder"
+5. Sort them out in a logical sequence

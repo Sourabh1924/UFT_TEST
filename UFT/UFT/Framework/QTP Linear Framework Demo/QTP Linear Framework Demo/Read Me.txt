@@ -1,0 +1,21 @@
+Before running the test case in the framework, please check the following things - 
+
+1) Open the test script and provide valid Gmail user name and password.
+
+2) Edit the driver script and update the testCasePath & resultPath locations based on where you haave saved the scripts.
+
+3) Rename DriverScript.txt to DriverScript.vbs.
+
+
+-----------------------------------------------------------------------
+You can execute the script in the following ways - 
+
+1) Open the test case in QTP and run it from there.
+
+2) Directly run the DriverScript vbs file.
+
+3) Add the DriverScript file in Windows Start-up or task scheduler to execute the test case at any desired time.
+
+
+
+In case of any issues, please drop in a mail to me at - anish@automationrepository.com

@@ -1,0 +1,39 @@
+Dim testCasePath, resultPath
+testCasePath = "D:\QTP\QTP Framework Samples\QTP Linear Framework Demo\GMail Inbox1"
+resultPath = "D:\QTP\QTP Framework Samples\QTP Linear Framework Demo\Result"
+
+'Open QTP
+Set qtpApp = CreateObject("QuickTest.Application")
+    
+'If QTP is not open then open QTP application
+If qtpApp.launched <> True Then
+	qtpApp.Launch
+End If
+        
+'Make the QuickTest application visible
+qtpApp.Visible = True
+    
+'Set QuickTest run options
+qtpApp.Options.Run.ImageCaptureForTestResults = "OnError"
+qtpApp.Options.Run.RunMode = "Fast"
+qtpApp.Options.Run.ViewResults = True
+
+'Open the test in read-only mode
+qtpApp.Open testCasePath, True
+WScript.Sleep 2000
+
+'set run settings for the test
+Set qtpTest = qtpApp.Test
+
+'Instruct QuickTest to perform next step when error occurs
+qtpTest.Settings.Run.OnError = "NextStep"
+
+'Create the Run Results Options object
+Set qtpResult = CreateObject("QuickTest.RunResultsOptions")
+
+'Set the results location
+qtpResult.ResultsLocation = resultPath
+
+'Run the test
+WScript.Sleep 3000
+qtpTest.Run qtpResult

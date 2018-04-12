@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Products_Root>
+    <Products_IPN VendorID="11344" >
+        <CustomerProducts CustomerProductName="Test" ProductCount="7">
+            <Products ProductType="BOOK" ProductName="Donald" >
+                <ProductComponents ProductAssetName="Donald.pdf" />
+                <ProductSpecs SpecClass="MEASUREMENT" SpecType="MARGINS" SpecValue="PER FILE"/>
+                <ProductSpecs SpecClass="OPERATION" SpecType="BIND" SpecValue="SADDLE"/>
+            </Products>
+            <Products ProductType="BOOK" ProductName="Duck">
+                <ProductComponents ProductAssetName="Duck.pdf"/>
+                <ProductSpecs SpecClass="MEASUREMENT" SpecType="MARGINS" SpecValue="PER FILE"/>
+                </Products>
+        </CustomerProducts>
+        <CustomerProducts CustomerProductName="Test2" ProductCount="2">
+            <Products ProductType="BOOK" ProductName="Micky">
+                <ProductComponents ProductAssetName="Mouse.pdf" />
+                <ProductComponents ProductAssetName="Mouse.pdf" />
+                <ProductSpecs SpecClass="MEASUREMENT" SpecType="MARGINS" SpecValue="PER FILE"/>
+            </Products>
+            <CustomerProductSpecs SpecClass="OPERATION" SpecType="KITTING" SpecValue="SHRINKWRAP KIT"/>
+        </CustomerProducts>
+        <CustomerProducts CustomerProductName="Test3" ProductCount="6">
+            <Products ProductType="BOOK" ProductName="Minnie">
+                <ProductComponents ProductAssetName="Mouse" />
+                <ProductSpecs SpecClass="MEASUREMENT" SpecType="MARGINS" SpecValue="PER FILE"/>
+            </Products>
+        </CustomerProducts>
+    </Products_IPN>
+</Products_Root>

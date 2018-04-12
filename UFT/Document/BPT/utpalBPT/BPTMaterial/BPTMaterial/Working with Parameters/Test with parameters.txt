@@ -1,0 +1,16 @@
+1. Login Component
+1. Go to ALM
+2. Log into The project available for the training
+3. Go to the Business Components module
+4. Under the Businees Components tree, create a folder and name it "BPT Training"
+5. Go to Test Plan Module
+6. Under the test plan Module, create a folder and name it: "Manual Tests"
+7. Right click in the folder just created and select: "Create a New Component"
+8. The Component will be called: "Login"
+9. Under the manual implementation tab, create following steps for this component:
+   1. access to http http://96.226.128.114:11500/mtours/servlet/com.mercurytours.servlet.WelcomeServlet
+   2. Type your username
+   3. Type your Password
+   4. Click Sign-in
+10. Go to the Parameters Tab and then add two Parameters: Username(username) Password(password)
+11. Make the password value as "encrypted"

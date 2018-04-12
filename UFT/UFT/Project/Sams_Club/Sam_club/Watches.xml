@@ -1,0 +1,4 @@
+﻿<Properties>
+  <WatchEntry0 value="datatable.Value(&quot;checks&quot;,global)" />
+  <WatchEntry1 value="datatable.Value(&quot;Pname&quot;,global)" />
+</Properties>

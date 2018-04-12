@@ -1,0 +1,9 @@
+﻿<Properties>
+  <WatchEntry0 value="object.count-1" />
+  <WatchEntry1 value="idate" />
+  <WatchEntry2 value="idatevalue" />
+  <WatchEntry3 value="(idatevalue(1)" />
+  <WatchEntry4 value="idateval" />
+  <WatchEntry5 value="idatevalue(1)" />
+  <WatchEntry6 value="idatevalue" />
+</Properties>

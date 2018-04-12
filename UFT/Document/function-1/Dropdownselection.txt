@@ -1,0 +1,33 @@
+Down in list---
+Function fSAPSelection(objPage, strItem)
+Set objStatus = objPage
+	Set objSapEdit = Description.Create()			
+			objSapEdit("micclass").value = "SAPEdit"
+			Set obj = objStatus.ChildObjects(objSapEdit)
+			For i = 0 to obj.count - 1
+				    If obj(i).Getroproperty("logical name") = "User Status"  Then
+						obj(i).Highlight
+						obj(i).Click
+						Wait 1
+						Exit for
+					End If
+			Next
+
+
+Set objUserStatus = objPage
+		
+		objUserStatus.WaitProperty "visible","True",5000
+If objUserStatus.Exist(5) Then
+		Set objStatusLink = Description.Create()        
+       objStatusLink("micclass").value = "Link"
+	   Set objUserStatusLink = objUserStatus.ChildObjects(objStatusLink)
+	   For l = 0 to objUserStatusLink.Count -1
+		   If objUserStatusLink(l).Getroproperty("text") = "Ready for review" Then
+				objUserStatusLink(l).Highlight
+				objUserStatusLink(l).Click				 
+		   End If
+	   Next
+End If
+End function 
+
+Browser("Interaction Center - [Service").Dialog("Windows Internet Explorer").WinButton("Leave this page").Click

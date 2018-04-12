@@ -1,0 +1,5 @@
+﻿<Properties>
+  <WatchEntry0 value="a=a+1" />
+  <WatchEntry1 value="ocollection.count" />
+  <WatchEntry2 value="i-1" />
+</Properties>

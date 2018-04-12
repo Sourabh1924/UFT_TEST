@@ -1,0 +1,178 @@
+
+
+--------------------------------------  Getting data from the different screen -------------------------------------
+
+Set objTree = SAPGuiSession("Session").SAPGuiWindow("Display of IDoc: 0000000008469").SAPGuiTree("TableTreeControl")
+Set Keyvalues = objTree.Object.GetAllNodeKeys
+objcount = Keyvalues.Count
+'msgbox objcount
+For i = 1 to objcount-1
+	If  Keyvalues(i) = "Datarecords" Then
+		Set objDataRec = objTree.Object
+		childCount = objDataRec.GetNodeChildrenCount(Keyvalues(i))
+'		msgbox childCount
+		For j =  1 to childCount 
+			  i = i + 1
+			  nodePath = objTree.Object.GetNodePathByKey(Keyvalues(i))
+			  varlinktext = objDataRec.GetNodeTextByKey(Keyvalues(i))
+	'		  nodeItem = i '"#"&
+	'		 SelectItemForTree  objTree,nodePath,nodeItem
+			  objDataRec.SelectNode Keyvalues(i)
+			  objDataRec.DoubleClickNode Keyvalues(i)
+			  wait 2
+			 Set objTableData = SAPGuiSession("Session").SAPGuiWindow("Display Data Record for").SAPGuiTable("SAPGuiTable")
+			  totalRow = objTableData.RowCount
+			  rowFlag = False
+				For rowNo =1 to totalRow
+					rowFlag = objTableData.ValidRow(rowNo)
+					If rowFlag = False Then
+						rowUsed = rowNo - 1
+						Print "Total used row in table: " & rowUsed
+                        rowFlag = False
+						Exit For
+					  Else
+						FldName = objTableData.GetCellData(rowNo,"Field name")
+						FldContents = objTableData.GetCellData(rowNo,"Field contents")
+						Print FldName & "  -------  " & FldContents
+                     End If
+				Next
+				SAPGuiSession("Session").SAPGuiWindow("Display Data Record for").SAPGuiButton("Back   (F3)").Click
+         Next       
+	End If
+
+Next
+
+
+
+
+
+
+
+----------------------------------------  Getting data from the same screen  ------------------------------------------------
+
+
+
+
+Set objTree = SAPGuiSession("Session").SAPGuiWindow("Display of IDoc: 0000000008469").SAPGuiTree("TableTreeControl")
+Set Keyvalues = objTree.Object.GetAllNodeKeys
+objcount = Keyvalues.Count
+'msgbox objcount
+rootText = objTree.Object.GetNodeTextByKey(Keyvalues(0))
+For i =1 to objcount-1
+	
+	If  Keyvalues(i) = "Datarecords" Then
+		currentParent = objTree.Object.GetNodeTextByKey(Keyvalues(i))
+		Set objDataRec = objTree.Object
+		childCount = objDataRec.GetNodeChildrenCount(Keyvalues(i))
+		msgbox childCount
+		For j =  1 to childCount 
+			  i = i + 1
+			   nodeText = objDataRec.GetNodeTextByKey(Keyvalues(i))
+			   actualPath = rootText & ";" & currentParent & ";" & nodeText
+				
+			  objDataRec.SelectNode Keyvalues(i)
+	          objTree.ClickLink actualPath, nodeText
+			  Set objTableData = SAPGuiSession("Session").SAPGuiWindow("Display of IDoc: 0000000008469").SAPGuiTable("SAPGuiTable")
+			  totalRow = objTableData.RowCount
+					For rowNo =1 to totalRow							
+							        FldName = objTableData.GetCellData(rowNo,"Fld name")
+									FldContents = objTableData.GetCellData(rowNo,"Fld cont.")	
+									If FldName <> "" Then										
+										Print FldName & "  -------  " & FldContents
+									 Else
+										rowUsed = rowNo - 1
+										Print "Total used row in table: " & rowUsed
+										Exit For
+									End If
+                       	Next
+			 
+         Next       
+	End If
+
+Next
+
+----------------------------------------   Getting data from the SAPGuiGrid object by selecting each of the Node   ------------------
+
+
+Set objTree = SAPGuiSession("Session").SAPGuiWindow("Asset Explorer").SAPGuiTree("TableTreeControl")
+Set Keyvalues = objTree.Object.GetAllNodeKeys
+objcount = Keyvalues.Count
+msgbox objcount
+rootText = objTree.Object.GetNodeTextByKey(Keyvalues(0))
+For i = 0 to objcount-1
+
+		Set objDataRec = objTree.Object
+		childCount = objDataRec.GetNodeChildrenCount(Keyvalues(i))
+		msgbox childCount
+		For j =  1 to childCount 
+			  i = i + 1
+			   nodeText = objDataRec.GetNodeTextByKey(Keyvalues(i))
+			   actualPath = rootText & ";" & nodeText
+				
+			  objTree.SelectNode actualPath 
+
+	   		 Set objGridData = SAPGuiSession("Session").SAPGuiWindow("Asset Explorer").SAPGuiGrid("Planned values Book depreciati")
+			  totalRow = objGridData.RowCount
+			  Print "Total used row in Grid: " & totalRow & " in " & nodeText
+					For rowNo =1 to totalRow							
+							        fldValue = objGridData.GetCellData(rowNo,"Value")
+									FiscalVar = objGridData.GetCellData(rowNo,"Fiscal year start")	
+									changeVar = objGridData.GetCellData(rowNo,"Change")	
+									yearEndVar = objGridData.GetCellData(rowNo,"Year-end")
+									crcyVar = objGridData.GetCellData(rowNo,"Currency")		
+																	
+									Print fldValue & "  -------  " & FiscalVar & "  -------  " & changeVar & "  --------  " & yearEndVar & "  --------  " & crcyVar
+                       	Next
+			 
+         Next      
+
+Next
+
+--------------------------------  Getting data from SapGuiGrid Object and acvating rows to navigate to other screen and writing IDoc numbers to Data table --------------------------------------
+
+
+
+Msgbox totalRow & ": " & totalColumn
+
+If totalRow > 0 Then			
+			wait 2
+'			Print objSapGrid.GetCellData(rowNo,"IDoc Number")
+
+			If totalRow > 1 Then
+			DataTable.AddSheet "IDoc_Number_View"
+			End If
+			For rowIndex = 1 To totalRow Step 1				
+					objSapGrid.SelectRow(rowIndex)
+					 strValue = objSapGrid.GetCellData(rowIndex,"#2")
+					Call DTAddParams ("IDoc_Number","IDoc_Number_View",rowIndex,1,strValue)
+					objSapGrid.ActivateCell rowIndex, "IDoc Number"
+					SAPGuiSession("Session").SAPGuiWindow("Display of IDoc: 0000000008469").SAPGuiButton("Back   (F3)").Click
+			Next
+			wait 2
+
+Else 
+			MsgBox "Data not available in, Total available rows are: " & totalRow
+End If
+
+
+
+Function DTAddParams(ColNames,MySheetName,rowNo,colNo,ColValue)
+
+If instr(ColNames,",") > 0 Then ''You may use any delimiter instead of "," (comma).You may pass the delimiter parameter as well.
+arrColNames = split(ColNames, ",")
+else
+ReDim arrColNames(0)
+arrColNames(0) = ColNames
+End If
+
+    If rowNo = 1 Then
+        DataTable.SetCurrentRow(rowNo)
+        Datatable.GetSheet(MySheetName).AddParameter arrColNames(colNo - 1),ColValue
+        
+    Else
+        DataTable.SetCurrentRow(rowNo)
+        Datatable(arrColNames(colNo - 1),MySheetName) = ColValue
+        
+    End If
+    
+End Function

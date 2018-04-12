@@ -1,0 +1,283 @@
+2017-03-09 17:46:07,654 [16] INFO  - Step 'Start' : Step 'Start' started
+2017-03-09 17:46:07,686 [16] INFO  - Step 'Start' ended successfully
+2017-03-09 17:46:07,687 [16] INFO  - Step 'Test Flow' : Step 'Test Flow' started
+2017-03-09 17:46:08,613 [16] INFO  - Step 'Iteration 1' : Step 'Iteration 1' started
+2017-03-09 17:46:08,617 [16] INFO  - Step 'GetFlights' : Step 'GetFlights' started
+2017-03-09 17:46:08,651 [16] INFO  - 
+Request:
+
+<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+  <Body>
+    <GetFlights xmlns="HP.SOAQ.SampleApp">
+      <DepartureCity>Denver</DepartureCity>
+      <ArrivalCity>Frankfurt</ArrivalCity>
+      <FlightDate>2017-04-05T00:00:00</FlightDate>
+    </GetFlights>
+  </Body>
+</Envelope>
+
+2017-03-09 17:46:08,794 [16] INFO  - URL: http://localhost:8000/HPFlights_SOAP
+2017-03-09 17:46:08,804 [16] INFO  - Returning the response to the previous channel
+2017-03-09 17:46:08,807 [16] INFO  - 
+Response:
+
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <GetFlightsResponse xmlns="HP.SOAQ.SampleApp">
+      <GetFlightsResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+        <Flight>
+          <Airline>SR</Airline>
+          <ArrivalCity>Frankfurt</ArrivalCity>
+          <ArrivalTime>01:41 PM</ArrivalTime>
+          <DepartureCity>Denver</DepartureCity>
+          <DepartureTime>12:57 PM</DepartureTime>
+          <FlightNumber>14243</FlightNumber>
+          <Price>110</Price>
+        </Flight>
+        <Flight>
+          <Airline>SR</Airline>
+          <ArrivalCity>Frankfurt</ArrivalCity>
+          <ArrivalTime>08:53 AM</ArrivalTime>
+          <DepartureCity>Denver</DepartureCity>
+          <DepartureTime>08:09 AM</DepartureTime>
+          <FlightNumber>14697</FlightNumber>
+          <Price>126.4</Price>
+        </Flight>
+        <Flight>
+          <Airline>AA</Airline>
+          <ArrivalCity>Frankfurt</ArrivalCity>
+          <ArrivalTime>08:45 AM</ArrivalTime>
+          <DepartureCity>Denver</DepartureCity>
+          <DepartureTime>08:00 AM</DepartureTime>
+          <FlightNumber>15797</FlightNumber>
+          <Price>104.6</Price>
+        </Flight>
+        <Flight>
+          <Airline>AA</Airline>
+          <ArrivalCity>Frankfurt</ArrivalCity>
+          <ArrivalTime>11:09 AM</ArrivalTime>
+          <DepartureCity>Denver</DepartureCity>
+          <DepartureTime>10:24 AM</DepartureTime>
+          <FlightNumber>15801</FlightNumber>
+          <Price>104.2</Price>
+        </Flight>
+        <Flight>
+          <Airline>AF</Airline>
+          <ArrivalCity>Frankfurt</ArrivalCity>
+          <ArrivalTime>01:54 PM</ArrivalTime>
+          <DepartureCity>Denver</DepartureCity>
+          <DepartureTime>10:24 AM</DepartureTime>
+          <FlightNumber>15802</FlightNumber>
+          <Price>173.47</Price>
+        </Flight>
+        <Flight>
+          <Airline>DL</Airline>
+          <ArrivalCity>Frankfurt</ArrivalCity>
+          <ArrivalTime>02:18 PM</ArrivalTime>
+          <DepartureCity>Denver</DepartureCity>
+          <DepartureTime>12:48 PM</DepartureTime>
+          <FlightNumber>15804</FlightNumber>
+          <Price>174.47</Price>
+        </Flight>
+        <Flight>
+          <Airline>AA</Airline>
+          <ArrivalCity>Frankfurt</ArrivalCity>
+          <ArrivalTime>01:33 PM</ArrivalTime>
+          <DepartureCity>Denver</DepartureCity>
+          <DepartureTime>12:48 PM</DepartureTime>
+          <FlightNumber>15805</FlightNumber>
+          <Price>100.3</Price>
+        </Flight>
+        <Flight>
+          <Airline>AA</Airline>
+          <ArrivalCity>Frankfurt</ArrivalCity>
+          <ArrivalTime>03:57 PM</ArrivalTime>
+          <DepartureCity>Denver</DepartureCity>
+          <DepartureTime>03:12 PM</DepartureTime>
+          <FlightNumber>15809</FlightNumber>
+          <Price>177.47</Price>
+        </Flight>
+      </GetFlightsResult>
+    </GetFlightsResponse>
+  </s:Body>
+</s:Envelope>
+
+2017-03-09 17:46:08,821 [16] INFO  - Structural Validation: True
+2017-03-09 17:46:08,825 [16] INFO  - Step 'GetFlights' ended successfully
+2017-03-09 17:46:08,826 [16] INFO  - Step 'CreateFlightOrder' : Step 'CreateFlightOrder' started
+2017-03-09 17:46:08,828 [16] INFO  - 
+Request:
+
+<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/" xmlns:p1="http://www.w3.org/2001/XMLSchema-instance">
+  <Body>
+    <CreateFlightOrder xmlns="HP.SOAQ.SampleApp">
+      <FlightOrder>
+        <Class>Business</Class>
+        <CustomerName>sourabh</CustomerName>
+        <DepartureDate>2017-04-05T00:00:00</DepartureDate>
+        <FlightNumber>15809</FlightNumber>
+        <NumberOfTickets>2</NumberOfTickets>
+      </FlightOrder>
+    </CreateFlightOrder>
+  </Body>
+</Envelope>
+
+2017-03-09 17:46:08,831 [16] INFO  - URL: http://localhost:8000/HPFlights_SOAP
+2017-03-09 17:46:09,119 [16] INFO  - Returning the response to the previous channel
+2017-03-09 17:46:09,123 [16] INFO  - 
+Response:
+
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <CreateFlightOrderResponse xmlns="HP.SOAQ.SampleApp">
+      <CreateFlightOrderResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+        <OrderNumber>207</OrderNumber>
+        <TotalPrice>709.88</TotalPrice>
+      </CreateFlightOrderResult>
+    </CreateFlightOrderResponse>
+  </s:Body>
+</s:Envelope>
+
+2017-03-09 17:46:09,141 [16] INFO  - Structural Validation: True
+2017-03-09 17:46:09,153 [16] ERROR - Checkpoint 2: "207" = "Order_num" failed
+2017-03-09 17:46:09,157 [16] INFO  - Step 'CreateFlightOrder' ended successfully
+2017-03-09 17:46:09,158 [16] INFO  - Step 'File Exists33' : Step 'File Exists33' started
+2017-03-09 17:46:09,163 [16] INFO  - Step 'File Exists33' : Input Parameter 'File path', Value: 'C:\Users\Yogesh\Desktop\Message.txt'
+2017-03-09 17:46:09,165 [16] INFO  - Step 'File Exists33' : Input Parameter 'File exists', Value: 'True'
+2017-03-09 17:46:09,168 [16] INFO  - Step 'File Exists33' ended successfully
+2017-03-09 17:46:09,169 [16] INFO  - Step 'Condition29' : Step 'Condition29' started
+2017-03-09 17:46:09,173 [16] INFO  - Step 'IfElse29' : Evaluation style : Using condition
+2017-03-09 17:46:09,174 [16] INFO  - Step 'Yes' : Step 'Yes' started
+2017-03-09 17:46:09,176 [16] INFO  - Step 'Report Message46' : Step 'Report Message46' started
+2017-03-09 17:46:09,179 [16] INFO  - Step 'Report Message46' : Order number file is exist
+2017-03-09 17:46:09,183 [16] INFO  - Step 'Write to File48' : Step 'Write to File48' started
+2017-03-09 17:46:09,187 [16] INFO  - Step 'Write to File48' : Input Parameter 'Content', Value: 'Order number file is exist'
+2017-03-09 17:46:09,188 [16] INFO  - Step 'Write to File48' : Input Parameter 'File path', Value: 'C:\Users\Yogesh\Desktop\Message.txt'
+2017-03-09 17:46:09,189 [16] INFO  - Step 'Write to File48' : Input Parameter 'Mode', Value: 'Append'
+2017-03-09 17:46:09,190 [16] INFO  - Step 'Write to File48' : Input Parameter 'Encoding', Value: 'ASCII'
+2017-03-09 17:46:09,192 [16] INFO  - Step 'Write to File48' : Input Parameter 'Append new line', Value: 'True'
+2017-03-09 17:46:09,196 [16] INFO  - Step 'Write to File48' ended successfully
+2017-03-09 17:46:09,199 [16] INFO  - Step 'Concatenate Strings65' : Step 'Concatenate Strings65' started
+2017-03-09 17:46:09,202 [16] INFO  - Step 'Concatenate Strings65' : Input Parameter 'Prefix', Value: 'order number :-'
+2017-03-09 17:46:09,203 [16] INFO  - Step 'Concatenate Strings65' : Input Parameter 'Suffix', Value: '207'
+2017-03-09 17:46:09,204 [16] INFO  - Step 'Concatenate Strings65' : Output Parameter 'Result', Value: 'order number :-207'
+2017-03-09 17:46:09,218 [16] INFO  - Step 'Concatenate Strings65' ended successfully
+2017-03-09 17:46:09,220 [16] INFO  - Step 'Write to File32' : Step 'Write to File32' started
+2017-03-09 17:46:09,221 [16] INFO  - Step 'Write to File32' : Input Parameter 'Content', Value: 'order number :-207'
+2017-03-09 17:46:09,223 [16] INFO  - Step 'Write to File32' : Input Parameter 'File path', Value: 'C:\Users\Yogesh\Desktop\Message.txt'
+2017-03-09 17:46:09,224 [16] INFO  - Step 'Write to File32' : Input Parameter 'Mode', Value: 'Append'
+2017-03-09 17:46:09,225 [16] INFO  - Step 'Write to File32' : Input Parameter 'Encoding', Value: 'ASCII'
+2017-03-09 17:46:09,226 [16] INFO  - Step 'Write to File32' : Input Parameter 'Append new line', Value: 'True'
+2017-03-09 17:46:09,228 [16] INFO  - Step 'Write to File32' ended successfully
+2017-03-09 17:46:09,237 [16] INFO  - Step 'Yes' ended successfully
+2017-03-09 17:46:09,240 [16] INFO  - Step 'Condition29' ended successfully
+2017-03-09 17:46:09,241 [16] INFO  - Step 'Report Message42' : Step 'Report Message42' started
+2017-03-09 17:46:09,243 [16] INFO  - Step 'Report Message42' : Order number generate
+2017-03-09 17:46:09,244 [16] INFO  - Step 'Write to File47' : Step 'Write to File47' started
+2017-03-09 17:46:09,247 [16] INFO  - Step 'Write to File47' : Input Parameter 'Content', Value: 'Order number generate'
+2017-03-09 17:46:09,248 [16] INFO  - Step 'Write to File47' : Input Parameter 'File path', Value: 'C:\Users\Yogesh\Desktop\Message.txt'
+2017-03-09 17:46:09,250 [16] INFO  - Step 'Write to File47' : Input Parameter 'Mode', Value: 'Append'
+2017-03-09 17:46:09,251 [16] INFO  - Step 'Write to File47' : Input Parameter 'Encoding', Value: 'ASCII'
+2017-03-09 17:46:09,252 [16] INFO  - Step 'Write to File47' : Input Parameter 'Append new line', Value: 'True'
+2017-03-09 17:46:09,254 [16] INFO  - Step 'Write to File47' ended successfully
+2017-03-09 17:46:09,255 [16] INFO  - Step 'GetFlightOrders' : Step 'GetFlightOrders' started
+2017-03-09 17:46:09,257 [16] INFO  - 
+Request:
+
+<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/" xmlns:p1="http://www.w3.org/2001/XMLSchema-instance">
+  <Body>
+    <GetFlightOrders xmlns="HP.SOAQ.SampleApp">
+      <FlightsDetails>
+        <CustomerName p1:nil="true">sourabh</CustomerName>
+        <FlightDate>2017-04-05T00:00:00</FlightDate>
+        <OrderNumber>207</OrderNumber>
+      </FlightsDetails>
+    </GetFlightOrders>
+  </Body>
+</Envelope>
+
+2017-03-09 17:46:09,267 [16] INFO  - URL: http://localhost:8000/HPFlights_SOAP
+2017-03-09 17:46:09,279 [16] INFO  - Returning the response to the previous channel
+2017-03-09 17:46:09,280 [16] INFO  - 
+Response:
+
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <GetFlightOrdersResponse xmlns="HP.SOAQ.SampleApp">
+      <GetFlightOrdersResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+        <FlightOrder>
+          <Class>Business</Class>
+          <CustomerName>sourabh</CustomerName>
+          <DepartureDate>2017-04-05T15:12:00</DepartureDate>
+          <FlightNumber>15809</FlightNumber>
+          <NumberOfTickets>2</NumberOfTickets>
+          <OrderNumber>207</OrderNumber>
+        </FlightOrder>
+      </GetFlightOrdersResult>
+    </GetFlightOrdersResponse>
+  </s:Body>
+</s:Envelope>
+
+2017-03-09 17:46:09,285 [16] INFO  - Structural Validation: True
+2017-03-09 17:46:09,287 [16] INFO  - Step 'GetFlightOrders' ended successfully
+2017-03-09 17:46:09,288 [16] INFO  - Step 'Condition21' : Step 'Condition21' started
+2017-03-09 17:46:09,290 [16] INFO  - Step 'IfElse21' : Evaluation style : Using condition
+2017-03-09 17:46:09,291 [16] INFO  - Step 'Yes' : Step 'Yes' started
+2017-03-09 17:46:09,292 [16] INFO  - Step 'DeleteFlightOrder' : Step 'DeleteFlightOrder' started
+2017-03-09 17:46:09,293 [16] INFO  - 
+Request:
+
+<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+  <Body>
+    <DeleteFlightOrder xmlns="HP.SOAQ.SampleApp">
+      <OrderNumber>207</OrderNumber>
+    </DeleteFlightOrder>
+  </Body>
+</Envelope>
+
+2017-03-09 17:46:09,295 [16] INFO  - URL: http://localhost:8000/HPFlights_SOAP
+2017-03-09 17:46:09,691 [16] INFO  - Returning the response to the previous channel
+2017-03-09 17:46:09,695 [16] INFO  - 
+Response:
+
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <DeleteFlightOrderResponse xmlns="HP.SOAQ.SampleApp">
+      <DeleteFlightOrderResult>true</DeleteFlightOrderResult>
+    </DeleteFlightOrderResponse>
+  </s:Body>
+</s:Envelope>
+
+2017-03-09 17:46:09,702 [16] INFO  - Structural Validation: True
+2017-03-09 17:46:09,705 [16] INFO  - Step 'DeleteFlightOrder' ended successfully
+2017-03-09 17:46:09,707 [16] INFO  - Step 'Report Message43' : Step 'Report Message43' started
+2017-03-09 17:46:09,708 [16] INFO  - Step 'Report Message43' : Order number is deleted
+2017-03-09 17:46:09,711 [16] INFO  - Step 'Write to File44' : Step 'Write to File44' started
+2017-03-09 17:46:09,713 [16] INFO  - Step 'Write to File44' : Input Parameter 'Content', Value: 'Order number is deleted'
+2017-03-09 17:46:09,714 [16] INFO  - Step 'Write to File44' : Input Parameter 'File path', Value: 'C:\Users\Yogesh\Desktop\Message.txt'
+2017-03-09 17:46:09,716 [16] INFO  - Step 'Write to File44' : Input Parameter 'Mode', Value: 'Append'
+2017-03-09 17:46:09,720 [16] INFO  - Step 'Write to File44' : Input Parameter 'Encoding', Value: 'ASCII'
+2017-03-09 17:46:09,722 [16] INFO  - Step 'Write to File44' : Input Parameter 'Append new line', Value: 'True'
+2017-03-09 17:46:09,726 [16] INFO  - Step 'Write to File44' ended successfully
+2017-03-09 17:46:09,728 [16] INFO  - Step 'Yes' ended successfully
+2017-03-09 17:46:09,730 [16] INFO  - Step 'Condition21' ended successfully
+2017-03-09 17:46:09,732 [16] INFO  - Step 'Report Message41' : Step 'Report Message41' started
+2017-03-09 17:46:09,733 [16] INFO  - Step 'Report Message41' : Script work fine
+2017-03-09 17:46:09,735 [16] INFO  - Step 'Write to File52' : Step 'Write to File52' started
+2017-03-09 17:46:09,737 [16] INFO  - Step 'Write to File52' : Input Parameter 'Content', Value: 'Script work fine'
+2017-03-09 17:46:09,738 [16] INFO  - Step 'Write to File52' : Input Parameter 'File path', Value: 'C:\Users\Yogesh\Desktop\Message.txt'
+2017-03-09 17:46:09,739 [16] INFO  - Step 'Write to File52' : Input Parameter 'Mode', Value: 'Append'
+2017-03-09 17:46:09,740 [16] INFO  - Step 'Write to File52' : Input Parameter 'Encoding', Value: 'ASCII'
+2017-03-09 17:46:09,756 [16] INFO  - Step 'Write to File52' : Input Parameter 'Append new line', Value: 'True'
+2017-03-09 17:46:09,765 [16] INFO  - Step 'Write to File52' ended successfully
+2017-03-09 17:46:09,767 [16] INFO  - Step 'Write to File60' : Step 'Write to File60' started
+2017-03-09 17:46:09,773 [16] INFO  - Step 'Write to File60' : Input Parameter 'Content', Value: '------------------------------------------'
+2017-03-09 17:46:09,775 [16] INFO  - Step 'Write to File60' : Input Parameter 'File path', Value: 'C:\Users\Yogesh\Desktop\Message.txt'
+2017-03-09 17:46:09,778 [16] INFO  - Step 'Write to File60' : Input Parameter 'Mode', Value: 'Append'
+2017-03-09 17:46:09,781 [16] INFO  - Step 'Write to File60' : Input Parameter 'Encoding', Value: 'ASCII'
+2017-03-09 17:46:09,782 [16] INFO  - Step 'Write to File60' : Input Parameter 'Append new line', Value: 'True'
+2017-03-09 17:46:09,824 [16] INFO  - Step 'Write to File60' ended successfully
+2017-03-09 17:46:09,826 [16] INFO  - Step 'Iteration 1' ended successfully
+2017-03-09 17:46:09,827 [16] INFO  - Step 'Test Flow' ended successfully
+2017-03-09 17:46:10,129 [16] INFO  - Step 'End' : Step 'End' started
+2017-03-09 17:46:10,137 [16] INFO  - Step 'End' ended successfully

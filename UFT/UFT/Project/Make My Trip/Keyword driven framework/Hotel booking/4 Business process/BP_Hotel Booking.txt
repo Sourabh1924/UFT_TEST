@@ -1,0 +1,13 @@
+Business Process Of Bus Booking:
+BP01: Launch Internet Explore.
+BP02: Open MakeMyTrip as http://www.makemytrip.com/
+BP03: Click on Hotel Link
+BP04: Click On Domestic Link
+BP05: Fill all Sections Like Destination, CheckIn Date, CheckOut Date, Adult, Children 
+BP06: Click Search Hotel Link
+BP07: Click First Book Now Link
+BP08: Select First Book Now Link (as selection of room) 
+BP09: Fill All Sections of Traveller Details as FirstName, LastName, Age, EmailId, MobileNo.
+BP10: Click On Check Box as i am booking for myself
+BP11: Click On Continue To Payment Link
+BP12: Close Application

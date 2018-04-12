@@ -1,0 +1,199 @@
+'******************************[Functions Catalog]******************************************
+'		1. 	F_ReadXml
+'		2. F_RecurseNodes
+'		3 	F_SetValue
+'		4.	F_GetAttributeVal
+'		5.	F_TagCount
+'		6. F_GetAllAttributes
+'		7.	F_GetAttributesValue
+'		8.  F_GetElemValByPath
+'***********************************************************************************************
+'===================================[1]===============================
+'    Function Name:  F_ReadXml
+'   Function Description:  It  reads xml file
+'   Parameter:  
+'   Date:  02-07-2013
+'====================================================================
+Function F_ReadXml(P_XmlFile)
+	On error resume next
+	'-Local varibale declaration
+	Dim objxmlDoc 
+	Dim xmlNode
+	'-Creating XML object
+	Set objxmlDoc = CreateObject("MSXML2.DOMDocument")
+	objxmlDoc.async = False
+	'-Verifying the file is loaded or not
+	If Not objxmlDoc.Load(P_XmlFile) Then
+		MsgBox objxmlDoc.parseError.reason
+		Else 
+			For Each xmlNode In objxmlDoc.childNodes
+			'-Calling the RecurseNode function as many as required
+			Call F_RecurseNodes(xmlNode)
+			Next
+	End If    
+End Function
+
+'===================================[2]===============================
+'    Function Name:  F_RecurseNodes
+'   Function Description:  It  recurses childxml node
+'   Parameter:  
+'   Date:  02-07-2013
+'====================================================================
+Function F_RecurseNodes(Byval xmlNode)
+	On error resume next
+	'-Local varibale declaration
+	Dim TheSubNode
+	'-Validating is has childNodes or not
+	If xmlNode.hasChildNodes Then
+		For Each TheSubNode In xmlNode.childNodes
+			Print TheSubNode.tagname 
+			Print TheSubNode.nodevalue
+			'-Calling the function itself
+			Call F_RecurseNodes(TheSubNode)			  
+		Next
+	End If
+End Function
+'===================================[3]===============================
+'    Function Name:  F_SetValue
+'   Function Description:  It  set the value to specifiec element
+'   Parameter:  
+'   Date:  02-07-2013
+'====================================================================
+
+Function F_SetValue(P_XmlFile,P_ElemName, P_Value, P_SavePath)
+'		On error resume next
+		set objXML = CreateObject("Microsoft.XMLDOM")
+		objXML.async = "false"
+		'-Verifying the file is loaded or not
+		If Not objXML.Load(P_XmlFile) Then
+			MsgBox objXML.parseError.reason
+		Else
+			Set objRootNodeList = objXML.getElementsByTagName("*")
+			For Each Elem In objRootNodeList
+				'-validating the specific Header is exist or not if it then retrieving its values
+				If Elem.tagName = P_ElemName Then                           								
+					Elem.text = P_Value
+					objXML.Save (P_SavePath)
+					Exit for
+				End if
+			Next 			
+		End If
+End Function
+'===================================[4]===============================
+'    Function Name:  F_GetAttributeVal
+'   Function Description:  It  returns the specified attribute value
+'   Parameter:  
+'   Date:  02-07-2013
+'====================================================================
+Function F_GetAttributeVal(P_XmlFile,P_Attribute)
+	On error resume next
+	set objXML = CreateObject("Microsoft.XMLDOM")
+	objXML.async = "false"
+	'-Verifying the file is loaded or not
+	If Not objXML.Load(P_XmlFile) Then
+		MsgBox objXML.parseError.reason
+	Else
+		'-Retrieveing the whole tagname
+		Set objRootNodeList = objXML.getElementsByTagName("*")
+		n_states = objRootNodeList.length
+			For i = 0 to n_states
+				set state = objRootNodeList.item(i)
+				Attr = state.getAttribute(P_Attribute)
+				print Attr
+			Next
+	End if
+End Function
+'===================================[5]===============================
+'    Function Name:  F_TagCount
+'   Function Description:  It  counts the tagnode
+'   Parameter:  
+'   Date:  02-07-2013
+'====================================================================
+Function F_TagCount()
+	On error resume next
+	objXML.async = "false"
+	'-Verifying the file is loaded or not
+	If Not objXML.Load(P_XmlFile) Then
+		MsgBox objXML.parseError.reason
+	Else
+		Set objRootNodeList = objXML.getElementsByTagName("*")
+		n_states = objRootNodeList.length
+		F_TagCount = n_states
+	End if
+End Function
+
+'===================================[6]===============================
+'    Function Name:  F_GetAllAttributes
+'   Function Description:  It  display all attributes
+'   Parameter:  
+'   Date:  02-07-2013
+'====================================================================
+Function F_GetAllAttributes(P_XMLfile)
+'   -Local variables declaration
+    Dim objNamedNodeMap
+	Dim  intAtt, strAttName
+	'-Creating xml object
+	Set objXMLDoc = CreateObject("Microsoft.XMLDOM")
+	objXMLDoc.async = False
+	objXMLDoc.load(P_XMLfile)
+'    Set RootNodeList = objXMLDoc.getElementsByTagName("*")
+	Set objNamedNodeMap = objXMLDoc.documentElement
+'	-Retrieving the child object
+	For i = 0  to objNamedNodeMap.childnodes.length -1
+			print objNamedNodeMap.childnodes.item(i).nodename 
+		For Each intAtt in objXMLDoc.documentElement.childnodes.item(i).attributes
+'			print "Attribute "& intAtt.name & "<=>" & "Value " &intAtt.value
+		print "Attribute "& intAtt.name
+		Next
+		  print "---------------------------"
+	Next
+End Function
+'===================================[7]===============================
+'    Function Name:  F_GetAttributesValue
+'   Function Description:  It  displays all attributes value along with attribute name
+'   Parameter:  
+'   Date:  02-07-2013
+'====================================================================
+Function F_GetAttributesValue(P_XMLfile)
+'   -Local variables declaration
+    Dim objNamedNodeMap
+	Dim intAtt
+	Dim strAttName
+'	-Creating xml object
+	Set objXMLDoc = CreateObject("Microsoft.XMLDOM")
+	objXMLDoc.async = False
+	objXMLDoc.load(P_XMLfile)
+'    Set RootNodeList = objXMLDoc.getElementsByTagName("*")
+	Set objNamedNodeMap = objXMLDoc.documentElement
+'	-Retrieving the child object
+	For i = 0  to objNamedNodeMap.childnodes.length -1
+			print objNamedNodeMap.childnodes.item(i).nodename 
+		For Each intAtt in objXMLDoc.documentElement.childnodes.item(i).attributes
+			print  intAtt.name & "=" & intAtt.value
+         Next
+			print "---------------------------"
+	Next
+End Function
+
+'===================================[8]===============================
+'    Function Name:  F_GetElemByPath
+'   Function Description:  It  displays all attributes value
+'   Parameter:  
+'   Date:  02-07-2013
+'====================================================================
+Function F_GetElemValByPath(P_XMLfile,P_ElemPath)
+'   -Creating xml object
+	Set objXMLDoc = CreateObject("Microsoft.XMLDOM")
+	objXMLDoc.async = False
+	'-Verifying the file is loaded or not
+	If Not objXMLDoc.Load(P_XmlFile) Then
+		MsgBox objXMLDoc.parseError.reason
+	Else 
+		Set objNode = objXMLDoc.documentElement.selectNodes(P_ElemPath)
+		For Each Node  In objNode
+			print Node.text
+		Next
+	End if
+End Function
+
+

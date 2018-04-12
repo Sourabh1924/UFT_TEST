@@ -1,0 +1,41 @@
+'----------Function Call fGetUsrData()
+
+Set objxl=createObject("excel.application")
+Set objUsrDic = CreateObject("Scripting.Dictionary")
+strSheetType = "Sheet2"
+strError = ""
+
+call fGetUsrData(objxl,objUsrDic,strSheetType,strError)
+''        Printing the Keys and items of Dictionary Object
+		usrDicItems = objUsrDic.Items 'Get the items.
+		usrDicKeys = objUsrDic.Keys 'Get the keys.
+		For i = 0 To objUsrDic.Count-1 'Iterate the array.
+		print  usrDicKeys(i) & " : " & usrDicItems(i)
+		Next
+
+
+
+'------------------ Function Call fGetInputData()
+
+Set objxl=createObject("excel.application")
+Set objDocIdDic = CreateObject("Scripting.Dictionary")
+Set objPMODic = CreateObject("Scripting.Dictionary")
+Set objInitialDic = CreateObject("Scripting.Dictionary")
+Set objTextDic = CreateObject("Scripting.Dictionary")
+strSheetType = "Sheet1"
+strError = ""
+
+Call fGetInputData(objxl,objDocIdDic,objPMODic,objInitialDic,objTextDic,strSheetType,strError)
+
+'    Printing the Keys and items of Dictionary Object
+arrDocIdItems = objDocIdDic.Items 'Get the items.
+arrDocIdKeys = objDocIdDic.Keys 'Get the keys.
+arrPMOItems = objPMODic.Items 'Get the items.
+arrPMOKeys = objPMODic.Keys 'Get the keys.
+arrInitialItems = objInitialDic.Items 'Get the items.
+arrInitialKeys = objInitialDic.Keys 'Get the keys.
+arrTextItems = objTextDic.Items 'Get the items.
+arrTextKeys = objTextDic.Keys 'Get the keys.
+For i = 0 To objDocIdDic.Count-1 'Iterate the array.
+print  arrDocIdKeys(i) & " : " & arrDocIdItems(i) & "!!" & arrPMOKeys(i) & " : " & arrPMOItems(i) & "!!" & arrInitialKeys(i) & " : " & arrInitialItems(i) & "!!" & arrTextKeys(i) & " : " & arrTextItems(i) 
+Next

@@ -1,0 +1,1 @@
+﻿RunAction "Action1", oneIteration, Parameter("userName"), Parameter("password"), Parameter("passCount"), Parameter("fromPort"), Parameter("fromMonth"), Parameter("fromDay"), Parameter("toPort"), Parameter("toMonth"), Parameter("toDay"), Parameter("servClass"), Parameter("servClass_1")

@@ -1,0 +1,177 @@
+Customer                
+        XD01    Create Customer (Centrally)
+        XD02    Change Customer (Centrally)
+        XD03    Display Customer (Centrally)
+        XD04    Customer Changes (Centrally)
+        XD05    Block customer (centrally)
+        XD06    Mark customer for deletion (centr.)
+        XD07    Change Customer Account Group
+        XD99    Customer master mass maintenance
+        XDN1    Maintain Number Ranges (Customer)
+
+Vendor          
+        XEIP    Number range maintenance: EXPIMP
+        XK01    Create vendor (centrally)
+        XK02    Change vendor (centrally)
+        XK03    Display vendor (centrally)
+        XK04    Vendor Changes (Centrally)
+        XK05    Block Vendor (Centrally)
+        XK06    Mark vendor for deletion (centrally)
+        XK07    Change vendor account group
+
+Sales Order             
+        VA00    Initial Sales Menu
+        VA01    Create Sales Order
+        VA02    Change Sales Order
+        VA03    Display Sales Order
+        VA05    List of Sales Orders
+        VA07    Compare Sales - Purchasing (Order)
+        VA08    Compare Sales - Purchasing (Org.Dt.)
+
+Inquiry         
+        VA11    Create Inquiry
+        VA12    Change Inquiry
+        VA13    Display Inquiry
+        VA14L   Sales Documents Blocked for Delivery
+        VA15    Inquiries List
+
+Quotation               
+        VA21    Create Quotation
+        VA22    Change Quotation
+        VA23    Display Quotation
+        VA25    Quotations List
+        VA26    Collective Processing for Quotations
+
+Contract                
+        VA41    Create Contract
+        VA42    Change Contract
+        VA42W   Workflow for master contract
+        VA43    Display Contract
+        VA44    Actual Overhead: Sales Order
+        VA45    List of Contracts
+        VA46    Coll.Subseq.Processing f.Contracts
+
+Item Proposal           
+        VA51    Create Item Proposal
+        VA52    Change Item Proposal
+        VA53    Display Item Proposal
+        VA55    List of Item Proposals
+        VA88    Actual Settlement: Sales Orders
+
+Delivery (Outbound)             
+        VL00    Shipping
+        VL01    Create Delivery
+        VL01N   Create Outbound Dlv. with Order Ref.
+        VL01NO  Create Outbound Dlv. w/o Order Ref.
+        VL02    Change Outbound Delivery
+        VL02N   Change Outbound Delivery
+        VL03    Display Outbound Delivery
+        VL03N   Display Outbound Delivery
+        VL04    Process Delivery Due List
+        VL06    Delivery Monitor
+        VL06C   List Outbound Dlvs for Confirmation
+        VL06D   Outbound Deliveries for Distribution
+        VL06F   General delivery list - Outb.deliv.
+        VL06G   List of Oubound Dlvs for Goods Issue
+        VL06I   Inbound Delivery Monitor
+        VL06IC  Confirmation of putaway inb. deliv.
+        VL06ID  Inbound Deliveries for Distribution
+        VL06IF  Selection inbound deliveries
+        VL06IG  Inbound deliveries for goods receipt
+        VL06IP  Inbound deliveries for putaway
+        VL06L   Outbound Deliveries to be Loaded
+        VL06O   Outbound Delivery Monitor
+        VL06P   List of Outbound Dlvs for Picking
+        VL06T   List Outbound Dlvs (Trans. Planning)
+        VL06U   List of Uncheckd Outbound Deliveries
+        VL08    Confirmation of Picking Request
+        VL09    Cancel Goods Issue for Delivery Note
+        VL10    Edit User-specific Delivery List
+        VL10A   Sales Orders Due for Delivery
+        VL10B   Purchase Orders Due for Delivery
+
+Customer management             
+        FD01    Create Customer (Accounting)
+        FD02    Change Customer (Accounting)
+        FD02CORE        Maintain customer
+        FD03    Display Customer (Accounting)
+        FD04    Customer Changes (Accounting)
+        FD05    Block Customer (Accounting)
+        FD06    Mark Customer for Deletion (Acctng)
+        FD08    Confirm Customer Individually(Actng)
+        FD09    Confirm Customer List (Accounting)
+        FD10    Customer Account Balance
+        FD10N   Customer Balance Display
+        FD10NA  Customer Bal. Display with Worklist
+        FD10NET Customer Balance Display
+        FD11    Customer Account Analysis
+        FD15    Transfer customer changes: send
+        FD16    Transfer customer changes: receive
+        FD24    Credit Limit Changes
+        FD32    Change Customer Credit Management
+        FD33    Display Customer Credit Management
+        FD37    Credit Management Mass Change
+
+Pricing         
+        V/03    Create Condition Table (SD Price)
+        V/04    Change Condition Table (Sales pr.)
+        V/05    Display Condition Table: (Sales Pr.)
+        V/06    Condition Categories: SD Pricing
+        V/07    Maintain Access (Sales Price)
+        V/08    Conditions: Procedure for A V
+        V/09    Condition Types: Account Determin.
+        V/10    Account Determination: Access Seqnc
+        V/11    Conditions: Account Determin.Proced.
+        V/12    Account Determination: Create Table
+        V/13    Account Determination: Change Table
+        V/14    Account Determination: Display Table
+
+BOM             
+        CS00    BOM Menu
+        CS01    Create Material BOM
+        CS02    Change Material BOM
+        CS03    Display Material BOM
+        CS05    Change Material BOM Group
+        CS06    Display Material BOM Group
+        CS07    Allocate Material BOM to Plant
+        CS08    Change Material BOM - Plant Alloc.
+        CS09    Display Allocations to Plant
+        CS11    Display BOM Level by Level
+        CS12    Multilevel BOM
+        CS13    Summarized BOM
+        CS14    BOM Comparison
+        CS15    Single-Level Where-Used List
+        CS20    Mass Change: Initial Screen
+        CS21    Mass Material Change: Initial Screen
+        CS22    Mass Document Change: Initial Screen
+        CS23    Mass Class Change: Initial Screen
+        CS25    Archiving for BOMs
+        CS26    BOM deletion
+        CS27    Retrieval of BOMs
+        CS28    Archiving for BOMs
+        CS31    Create class BOM
+        CS32    Change class BOM
+        CS33    Display class BOM
+        CS40    Create Link to Configurable Material
+        CS41    Change Material Config. Allocation
+        CS42    Display Material Config. Assignment
+        CS51    Create standard BOM
+        CS52    Change standard BOM
+        CS53    Display standard BOM
+        CS61    Create Order BOM
+        CS62    Change Order BOM
+        CS63    Display Order BOM
+        CS71    Create WBS BOM
+        CS72    Change WBS BOM
+        CS73    Display WBS BOM
+        CS74    Create multi-level WBS BOM
+        CS75    Change multi-level WBS BOM
+        CS76    Display multi-level WBS BOM
+        CS80    Change Documents for Material BOM
+        CS81    Change Documents for Standard BOM
+        CS82    Change documents for sales order BOM
+        CS83    Change documents for WBS BOM
+        CS84    Change documents for class BOM
+        CS90    Material BOM Number Ranges
+        CS91    Number Ranges for Standard BOMs
+        CS92    Number Ranges for Sales Order BOMs

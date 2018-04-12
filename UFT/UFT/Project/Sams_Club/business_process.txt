@@ -1,0 +1,14 @@
+BP-1: Go to http://www.samsclubchecks.com/index.aspx
+BP-2: Click on "Personal Checks"
+BP-3: Click on "Basic Checks"
+BP-4: Select any of the check
+BP-5: Select single check and select 2 boxs, if single check is not there go through the duplicate checks, if both are not there exit the checks 
+BP-6: Under Account Information –  9-digit Routing number: 123123123, Checking Account Number: 123456789, Starting Check Number: 1001, email: houston@texas.com, phone: 713-555-1212. Click on "Next"
+BP-7:  In the Personal Information section – enter Name: John Doe, City: 10391 Laureate Drive, City: San Antonio, State: TX, Zip: 78249,Name of Financial Institution : Key Bank. select "Next" button
+BP-8 : Verify Your Address page "Continue" button
+BP-9:  Click on "Preview" button.
+BP-10: Select "I Agree" radio button and approve and continue.
+BP-11: Click on "Add to Cart" button.
+BP-12: Click on "Checkout" button.
+BP-13: Input CreditCardType: Visa, CreditCardNumber: 4111111111111111, Expiration Date: 12/2019, CID: 751. Click on "Submit Order"
+

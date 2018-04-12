@@ -1,0 +1,13 @@
+BP-01: Copy this link C:\Program Files (x86)\HP\Unified Functional Testing\samples\flight\app\flight4a.exe
+BP-02: Type "Agent name"
+BP-03: TYPE "Password"
+BP-04: Click on "Ok" utton
+BP-05: Select any date 
+BP-06: Select departure city
+BP-07: Select destination city
+BP-08: Click on "FLIGHT" button
+BP-09: Select the flight you want to travel.
+BP-10: Type "Customer Name"
+BP-11: Select Class
+BP-12: Click on "Insert Order" button.
+

@@ -1,0 +1,16 @@
+http://www.webservicex.com/currencyconvertor.asmx?wsdl
+
+http://www.webservicex.com/globalweather.asmx?wsdl
+
+http://wsf.cdyne.com/WeatherWS/Weather.asmx?WSDL
+
+http://trainingrite.net/trdemows/trws.asmx?wsdl
+
+http://www.trainingrite.net/trws/TrainingRiteMathWS/TrainingRiteMathSoapUIWebService.asmx?wsdl
+
+http://www.trainingrite.net/creditapprovalservice/creditservice.asmx?wsdl
+
+http://localhost:8000/HPFlights_REST/FlightService.wadl
+
+http://connect.makemytrip.com/makemytrip/services/CFlightWebServices.wsdl
+

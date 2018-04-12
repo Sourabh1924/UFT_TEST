@@ -1,0 +1,3 @@
+﻿<Properties>
+  <WatchEntry0 value="Window(&quot;Skype for Business&quot;).WinObject(&quot;WinObject&quot;).WinButton(&quot;Sign In&quot;).exist" />
+</Properties>

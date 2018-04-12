@@ -1,0 +1,4 @@
+﻿<Properties>
+  <WatchEntry0 value="mysheet.cells(i,j)" />
+  <WatchEntry1 value="mysheet.cells(i,j)" />
+</Properties>

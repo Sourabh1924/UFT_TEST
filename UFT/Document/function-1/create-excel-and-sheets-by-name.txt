@@ -1,0 +1,156 @@
+
+strSheetPath = "C:\Documents and Settings\yogesh\Desktop\MyTest\Char_Validation_Report.xls"
+
+arrTable = Array("ZPCF_MVLINECFG","ZPCF_MVBLOCKCFG","ZPCF_MVSTRCTRCFG","ZPCF_MVUNITCFG","ZPCF_MVCMODCFG")
+
+Set objDicSrc = CreateObject("Scripting.Dictionary")
+Set objDicDst = CreateObject("Scripting.Dictionary")
+objDicSrc.Add "A","100"
+objDicSrc.Add "B","200"
+objDicSrc.Add "C","300"
+
+objDicDst.Add "C","300"
+objDicDst.Add "B","250"
+objDicDst.Add "A","100"
+
+
+'If objDicDst.Exists("A") Then
+'Msgbox objDicDst.Item("A")
+'End if 
+
+
+
+blnStatus = fGenerateReport(arrTable,strSheetPath,strError)
+Call fPopulateReports(objDicSrc,objDicDst,"ZPCF_MVLINECFG",strSheetPath,strError)
+
+
+'-------------------------------------------------    Function to create excel file and create the sheet as per user suggested names   -------------
+
+
+	Function fGenerateReport(arrTable,strSheetPath,ByRef strError)
+		
+		Set objFso = CreateObject("Scripting.FileSystemObject")
+		
+		If strSheetPath <> "" Then
+		
+			If objFso.FileExists(strSheetPath) Then
+				SystemUtil.CloseProcessByName("EXCEL.EXE")
+				objFso.DeleteFile(strSheetPath)			
+			End If
+		
+			If Not objFso.FileExists(strSheetPath) Then
+		
+				Set objExl = CreateObject("Excel.Application")
+				
+				objExl.Workbooks.Add		
+		
+				objExl.Visible = False
+				objExl.DisplayAlerts = False
+				Set objSheet = objExl.ActiveWorkbook
+				objSheet.Worksheets.Add
+				objSheet.Worksheets.Add
+		
+				For i = 1 to objExl.Worksheets.Count
+				objSheet.Worksheets(i).Name = arrTable(i - 1)
+				Next
+		
+			End If
+		
+			objExl.ActiveWorkbook.SaveAs(strSheetPath)			
+			objExl.ActiveWorkbook.Close
+			objExl.Quit
+			Set objFso = Nothing
+			Set objExl = Nothing	
+		
+		End If
+
+	End Function
+
+'--------------------------------------------------------------------------------------------------------------------------------------------------
+
+'-----------------------------------------   Create a excel report by comparing two dictionariy objects keys and items.  ------------------------------
+
+Function fPopulateReports(objDictSrc, objDicDst, strSheetName, strSheetPath, strError)
+Dim i, arrKeys
+       'Check the two Dictionary objects have the same number of items?
+               If objDictSrc.Count = objDicDst.Count Then
+					Set objExl = CreateObject("Excel.Application")
+					objExl.Visible = True
+				    objExl.DisplayAlerts = False
+					objExl.Workbooks.Open strSheetPath
+					Set objSheet = objExl.ActiveWorkbook.Worksheets(strSheetName)
+					objSheet.cells(1,1).value = "Characteristics"
+					objSheet.Cells(1,1).Borders.LineStyle = 1
+					objSheet.Cells(1,1).HorizontalAlignment =  -4108
+					objSheet.Cells(1,1).Interior.ColorIndex = 8
+					objSheet.Cells(1,1).Font.Bold = True
+
+					objSheet.cells(1,2).value = "SE16 Values"
+					objSheet.Cells(1,2).Borders.LineStyle = 1
+					objSheet.Cells(1,2).HorizontalAlignment =  -4108
+					objSheet.Cells(1,2).Interior.ColorIndex = 8
+					objSheet.Cells(1,2).Font.Bold = True
+
+					objSheet.cells(1,3).value = "CT04 Values"
+					objSheet.Cells(1,3).Borders.LineStyle = 1
+					objSheet.Cells(1,3).HorizontalAlignment =  -4108
+					objSheet.Cells(1,3).Interior.ColorIndex = 8
+					objSheet.Cells(1,3).Font.Bold = True
+			   Else
+				   strError = "The two Dictionary objects don't have same number of items "
+				   fPopulateReports = false
+				   Exit Function
+               End If
+   'Compare all keys and their values
+               arrDic1Keys = objDictSrc.Keys
+			   arrDic1Items = objDictSrc.items
+			   arrDic2Keys = objDicDst.Keys
+			   arrDic2Items = objDicDst.items
+               For i = 0 to uBound(arrDic1Keys)
+        'Compare keys
+                       If objDicDst.Exists(arrDic1Keys(i)) Then
+							  objSheet.cells(i+2,1).value = arrDic1Keys(i)
+							  objSheet.Cells(i+2,1).Borders.LineStyle = 1
+							  objSheet.Cells(i+2,1).HorizontalAlignment =  -4108
+							  objSheet.Cells(i+2,1).Interior.ColorIndex = 8
+							  objSheet.Cells(i+2,1).Font.Bold = True
+
+							If objDicDst.Item(arrDic1Keys(i)) = objDicSrc.Item(arrDic1Keys(i))  Then
+								objSheet.cells(i+2,2).value = objDicSrc.Item(arrDic1Keys(i))
+								objSheet.Cells(i+2,2).Borders.LineStyle = 1
+								objSheet.Cells(i+2,2).HorizontalAlignment =  -4108
+								objSheet.Cells(i+2,2).Interior.ColorIndex = 43
+	
+								objSheet.cells(i+2,3).value = objDicDst.Item(arrDic1Keys(i))
+								objSheet.Cells(i+2,3).Borders.LineStyle = 1
+								objSheet.Cells(i+2,3).HorizontalAlignment =  -4108
+								objSheet.Cells(i+2,3).Interior.ColorIndex = 43
+						     Else
+								objSheet.cells(i+2,2).value = objDicSrc.Item(arrDic1Keys(i))
+								objSheet.Cells(i+2,2).Borders.LineStyle = 1
+								objSheet.Cells(i+2,2).HorizontalAlignment =  -4108
+								objSheet.Cells(i+2,2).Interior.ColorIndex = 18
+								
+								objSheet.cells(i+2,3).value = objDicDst.Item(arrDic1Keys(i))
+								objSheet.Cells(i+2,3).Borders.LineStyle = 1
+								objSheet.Cells(i+2,3).HorizontalAlignment =  -4108
+								objSheet.Cells(i+2,3).Interior.ColorIndex = 18
+							End If
+                          
+					   Else
+							strError = "oDict1 has a key [ "&(arrKeys(i))& "] which oDict2 doesn't have"
+							fPopulateReports = False
+							Exit Function
+                       End If
+     
+       Next
+	 		objExl.Rows.AutoFit
+			objExl.Columns.AutoFit
+			objExl.ActiveWorkbook.Save		
+			objExl.ActiveWorkbook.Close
+			objExl.Quit
+            Set objExl = Nothing	 
+End Function
+
+'-----------------------------------------------------------------------------------------------------------------------------------------------------
+

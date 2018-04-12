@@ -1,0 +1,21 @@
+2017-03-09 17:46:08,824 [16] ERROR - Failed to log checkpoint status:
+2017-03-09 17:46:08,824 [16] ERROR - System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at HP.ST.Fwk.RunTimeFWK.CheckpointFWK.ReportImpl.WriteCPToLog(Dictionary`2 reportData, ILog log)
+   at HP.ST.Fwk.RunTimeFWK.CheckpointFWK.ReportImpl.ReportToInternalLog(ISTRunTimeContext context, Dictionary`2 reportData)
+2017-03-09 17:46:09,145 [16] ERROR - Failed to log checkpoint status:
+2017-03-09 17:46:09,145 [16] ERROR - System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at HP.ST.Fwk.RunTimeFWK.CheckpointFWK.ReportImpl.WriteCPToLog(Dictionary`2 reportData, ILog log)
+   at HP.ST.Fwk.RunTimeFWK.CheckpointFWK.ReportImpl.ReportToInternalLog(ISTRunTimeContext context, Dictionary`2 reportData)
+2017-03-09 17:46:09,153 [16] ERROR - Checkpoint 2: "207" = "Order_num" failed
+2017-03-09 17:46:09,286 [16] ERROR - Failed to log checkpoint status:
+2017-03-09 17:46:09,286 [16] ERROR - System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at HP.ST.Fwk.RunTimeFWK.CheckpointFWK.ReportImpl.WriteCPToLog(Dictionary`2 reportData, ILog log)
+   at HP.ST.Fwk.RunTimeFWK.CheckpointFWK.ReportImpl.ReportToInternalLog(ISTRunTimeContext context, Dictionary`2 reportData)
+2017-03-09 17:46:09,704 [16] ERROR - Failed to log checkpoint status:
+2017-03-09 17:46:09,704 [16] ERROR - System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at HP.ST.Fwk.RunTimeFWK.CheckpointFWK.ReportImpl.WriteCPToLog(Dictionary`2 reportData, ILog log)
+   at HP.ST.Fwk.RunTimeFWK.CheckpointFWK.ReportImpl.ReportToInternalLog(ISTRunTimeContext context, Dictionary`2 reportData)

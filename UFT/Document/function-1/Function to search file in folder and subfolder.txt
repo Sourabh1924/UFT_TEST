@@ -1,0 +1,87 @@
+strFolder = "C:\Documents and Settings\usardar\Local Settings\Temp\1"
+
+searchStatus = fSearchFileInFolders(strFolder)
+
+Function fSearchFileInFolders(strFolder)
+   blnStatus = True
+
+   If blnStatus = True Then
+
+		filePath = fSearchFileInFolder(strFolder)
+		If filePath <> "" Then
+			print "File Found in Main Folder Directory" & ": Path - " & filePath
+			Exit Function
+		Else
+		blnStatus = False
+        End If  	
+		
+   End If
+
+   If blnStatus = False  Then
+
+		filePath = fSearchFileInSubFolder(strFolder)
+		If filePath <> "" Then
+			print "File Found in SubFolder Directory" & ": Path - " & filePath
+			Exit Function
+		Else
+		blnStatus = False
+		Print "File Not Available"
+        End If
+
+   End If
+End Function
+
+
+'-----------------------------------------  Search File In Main Folder  -------------------------------------------------
+
+Function fSearchFileInFolder(folderPath)
+	set fso = CreateObject("Scripting.FileSystemObject")
+    Set   objFolder =  fso.GetFolder(folderPath)
+
+	For Each File in objFolder.Files
+		  if Instr(1,File.Name,"000002") > 0 Then
+'					 Print File.Name
+					  filePath = objFolder.Path & "\" &  File.Name
+'					  print filePath
+					  fSearchFileInFolder = filePath
+					  Exit Function
+			 Else
+						fSearchFileInFolder = ""
+			End If
+	Next
+End Function
+
+'-------------------------------------   Search File in Sub Folders  -------------------------------------------
+
+Function fSearchFileInSubFolder(subFolderPath)
+	set fso = CreateObject("Scripting.FileSystemObject")
+	Set   objSubFolder =  fso.GetFolder(subFolderPath)
+
+	For Each subFolder in objSubFolder.SubFolders
+		Set   objFolder =  fso.GetFolder(subFolder.path)
+		For Each File in objFolder.Files
+		  if Instr(1,File.Name,"000002") > 0 Then
+					 'Print File.Name
+					  filePath = objFolder.Path & "\" &  File.Name
+'					  print filePath
+					  fSearchFileInSubFolder = filePath
+					  Exit Function
+			 Else
+						fSearchFileInSubFolder = ""
+			End If
+		Next
+	Next
+End Function
+
+'------------------------------------ Search file in given path and delete the file ---------------------------------
+
+blnStatus = fSearchFileInFolder("C:\Users\adewang\Desktop\fileCheck\abc.xml")
+Function fSearchFileInFolder(filePath)
+	set fso = CreateObject("Scripting.FileSystemObject")
+    if fso.FileExists(filePath) Then
+    	fso.DeleteFile filePath
+    	fSearchFileInFolder = True
+    Else
+		fSearchFileInFolder = False    
+    End If	
+End Function

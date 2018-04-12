@@ -1,0 +1,46 @@
+Function getDataFromExcel(xlSheetPath,strError)
+   Dim wshShell
+   Dim nColumnCount
+   Dim usedRow
+   Dim lastUsedCell
+   Dim mainListItem
+	
+		    Set objxl = createobject("excel.application")
+		    Set wshShell = createObject("WScript.Shell")		
+		    objxl.Visible = True
+			Set Workbook1= objxl.Workbooks.Open(xlSheetPath)
+			set strSheetName = objxl.ActiveWorkbook.Worksheets("LineItems")		
+			Set cell= strSheetName.Range("D:D").find("")
+			cellValue = cell.Address
+			cellArrVal = split(cellValue,"$")
+			usedRow = cellArrVal(2) - 1
+
+				If usedRow>2 Then				
+					nColumnCount =strSheetName.UsedRange.Columns.Count			
+					lastUsedCell =replace(strSheetName.Cells(usedRow,nColumnCount).address,"$","")		
+                     Workbook1.Worksheets("LineItems").Range("C3:" & lastUsedCell).Select
+					 Workbook1.Worksheets("LineItems").Range("C3:" & lastUsedCell).Copy
+					 wshShell.Run "notepad.exe"
+					 wait 2
+					 wshShell.SendKeys "^(v)"
+'					 wait 2
+					 strPNNum= Trim(strSheetName.Range("D2").Value)				
+					 strDesc = Trim(strSheetName.Range("F2").Value)					
+					 strQty = Trim(strSheetName.Range("G2").Value)
+					 mainListItem = Array(strPNNum,strDesc,strQty)
+					
+					 Workbook1.save
+					 Workbook1.close
+					 objxl.Quit
+					 set objxl=nothing
+					 getDataFromExcel = mainListItem
+				Else
+					Print "Excel Sheet is Empty"
+					 Workbook1.save
+					 Workbook1.close
+					 objxl.Quit
+					 set objxl=nothing
+					 Exit Function
+				End If	
+	
+End Function

@@ -1,0 +1,57 @@
+'-------------------------------------  Function to Click Label with specific text  ----------------------------
+Function fClickLabel(frameObject,strValue)
+Set oChildLabel = frameObject.ChildObjects
+childCount = oChildLabel.Count
+For i=0 to childCount-1
+	strClass = oChildLabel(i).getroproperty("micclass")
+	If strcomp(Ucase("SAPGuiLabel"),Ucase(strClass)) = 0 Then
+		strContent = oChildLabel(i).getroproperty("content")
+		If Instr(1,strContent,strValue) > 0 Then
+			oChildLabel(i).highlight
+			intX = oChildLabel(i).getroproperty("abs_x")
+			intY = oChildLabel(i).getroproperty("abs_y")
+			
+			intX = intX + 5
+			
+			Set oDeviceRply = Createobject("Mercury.DeviceReplay")	
+			oDeviceRply.MouseClick intX,intY,LEFT_MOUSE_BUTTON				
+			Exit For
+		End If
+	End If
+Next
+End Function
+
+
+'---------------------------------  Function to get all values from excel sheet according to Header -----------------------
+Set resDict = CreateObject("Scripting.Dictionary")
+	Set resDict = getdatabyColumnName(path,colName)
+	aItems = resDict.Items
+	 aKeys = resDict.Keys
+	
+	For i = LBound(aItems) To UBound(aItems)
+'	    Print aItems(i)&" : "&aKeys(i) 
+	Next
+Function getdatabyColumnName(path,colName)
+	Set myexl = CreateObject("Excel.Application")
+	Set myfile = myexl.Workbooks.Open(path)
+	Set mysheet = myfile.Sheets("Sheet1")
+	Set odict = CreateObject("Scripting.Dictionary")
+	r = mysheet.UsedRange.Rows.Count
+	c=mysheet.usedrange.columns.count
+	For i = 1 To c				
+		If StrComp(ucase(colName),ucase(mysheet.cells(3,i).value))=0 Then
+			For j = 4 To r+2
+				var = mysheet.cells(j,i).value				
+				odict.add j, var							
+			Next
+			flag =false
+			Set getdatabyColumnName = odict
+			myexl.Application.Quit
+			Exit For
+		End If
+		flag=true		
+	Next
+	If flag Then
+		MsgBox "File Couldn't Find"	
+	End If
+End Function

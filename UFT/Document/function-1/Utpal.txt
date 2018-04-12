@@ -1,0 +1,164 @@
+
+Set objMvLine = SAPGuiSession("Session").SAPGuiWindow("Data Browser: Table ZPCF_MVLIN")
+Call setSAPTableName (objMvLine,"ZPCF_MVLINECFG", "Config", "AB3F4E4C6936411481355FDFDD62028B", "", "", "", "")
+
+
+
+Set objOutWindow = SAPGuiSession("Session").SAPGuiWindow("Data Browser: Table ZPCF_MVPRO_Value_Out").ChildObjects
+
+Set oMvLineCfgClient = CreateObject("Scripting.Dictionary")
+Set oMvLineCfgId = 	CreateObject("Scripting.Dictionary")
+Set oMvLineCfgConfig = CreateObject("Scripting.Dictionary")
+Set oMvLineCfgChar = CreateObject("Scripting.Dictionary")
+Set oMvLineCfgCharValue = CreateObject("Scripting.Dictionary")
+
+
+Dim  MvLineCfgcolarr(5)
+MvLineCfgcolarr(0) = "Client"
+MvLineCfgcolarr(1) = "ID"
+MvLineCfgcolarr(2) = "Config"
+MvLineCfgcolarr(3) = "Characteristic"
+MvLineCfgcolarr(4) = "Char. Value"
+
+
+Call GetDataMvLineCfgTableTest(objOutWindow, oMvLineCfgClient, oMvLineCfgId, oMvLineCfgConfig, oMvLineCfgChar, oMvLineCfgCharValue,MvLineCfgcolarr)
+
+
+For exlIndex = 0 To UBound(oMvLineCfgChar.Keys) Step 1
+	Print oMvLineCfgChar.Keys()(exlIndex) & vbtab & oMvLineCfgChar.Items()(exlIndex) & vbtab & oMvLineCfgCharValue.Keys()(exlIndex) & vbtab & oMvLineCfgCharValue.Items()(exlIndex)
+Next
+
+
+
+Function GetDataMvLineCfgTableTest(ByRef objOutWindow,ByRef oMvLineCfgClient,ByRef oMvLineCfgId,ByRef oMvLineCfgConfig,ByRef oMvLineCfgChar,ByRef oMvLineCfgCharValue,colarr)
+
+	
+
+oDicIndex = 1
+rowCounter = 5
+
+
+'for MVLINEFLD TABLE
+
+If IsObject(objOutWindow) Then
+
+
+Set	strlblid = f_getColumnId(objOutWindow,colarr)
+
+arrstrlblid = strlblid.items
+arrstrlblKeys = strlblid.Keys
+	
+		For i = 1 To objOutWindow.count- 1 Step 1
+		strid =  objOutWindow(i).GetROProperty("id")
+		For j = 0 To UBound(arrstrlblid) Step 1
+		
+		If StrComp(strid,arrstrlblid(j) & rowCounter & "]") = 0 Then
+		   'print  objOutWindow(i).GetROProperty("content")
+		   If arrstrlblKeys(j) = "Client" Then
+		   		oMvLineCfgClient.Add arrstrlblKeys(j) & oDicIndex ,objOutWindow(i).GetROProperty("content")
+		   		Reporter.ReportEvent micDone, "Value",objOutWindow(i).GetROProperty("content")
+		   		counterFlag =counterFlag + 1
+		   	ElseIf arrstrlblKeys(j) = "ID" Then
+		   		oMvLineCfgId.Add arrstrlblKeys(j) & oDicIndex ,objOutWindow(i).GetROProperty("content")
+		   		Reporter.ReportEvent micDone, "Value",objOutWindow(i).GetROProperty("content")
+		   		counterFlag =counterFlag + 1
+		   	ElseIf arrstrlblKeys(j) = "Field ID" or arrstrlblKeys(j) = "Config" Then
+		   		oMvLineCfgConfig.Add arrstrlblKeys(j) & oDicIndex ,objOutWindow(i).GetROProperty("content")
+		   		Reporter.ReportEvent micDone, "Value",objOutWindow(i).GetROProperty("content")
+		   		counterFlag =counterFlag + 1
+		   	ElseIf arrstrlblKeys(j) = "Title" or arrstrlblKeys(j) = "Characteristic" Then
+		   		oMvLineCfgChar.Add arrstrlblKeys(j) & oDicIndex ,objOutWindow(i).GetROProperty("content")
+		   		Reporter.ReportEvent micDone, "Value",objOutWindow(i).GetROProperty("content")
+		   		counterFlag =counterFlag + 1
+		   	ElseIf arrstrlblKeys(j) = "Data" or  arrstrlblKeys(j) ="Char. Value" Then
+		   		oMvLineCfgCharValue.Add arrstrlblKeys(j) & oDicIndex ,objOutWindow(i).GetROProperty("content")
+		   		Reporter.ReportEvent micDone, "Value",objOutWindow(i).GetROProperty("content")
+		   		counterFlag =counterFlag + 1
+		   End If
+		   oDicIndex = oDicIndex + 1
+		   Exit For
+		End If		
+		If counterFlag =UBound(arrstrlblid) + 1  Then
+			rowCounter= rowCounter + 1
+			counterFlag =0
+		End If
+		
+		Next
+		
+Next
+End If
+
+
+
+End Function
+
+
+
+
+
+
+function f_getColumnId (ByRef objWindowsChild,ByRef colarr)
+Set oColValue = CreateObject("Scripting.Dictionary")
+For i = 1 To objWindowsChild.count- 1 Step 1
+	strlblName = objWindowsChild(i).GetROProperty("content")
+	
+		For j = 0 To Ubound(colarr) - 1 Step 1
+			If strlblName = colarr(j) Then	
+					strlblid = objWindowsChild(i).GetROProperty("id")
+					strlblid = Mid(strlblid,1,len(strlblid) - 2)
+					oColValue.Add strlblName,strlblid
+			End If  
+		 Next
+		
+	Next
+	set f_getColumnId = oColValue
+End Function 
+
+
+
+
+
+
+
+
+
+
+
+
+Function setSAPTableName ( ByRef objtblFilter , ByVal tblName, ByVal fldName1, ByVal fldValue1, ByVal fldName2, ByVal fldValue2, ByVal fldName3, ByVal fldValue3)
+'For MV Project
+SAPGuiSession("Session").Reset
+
+SAPGuiSession("Session").SAPGuiWindow("SAP Easy Access").SAPGuiOKCode("OKCode").Set "SE16"
+
+SAPGuiSession("Session").SAPGuiWindow("SAP Easy Access").SendKey ENTER
+
+SAPGuiSession("Session").SAPGuiWindow("Data Browser: Initial").SAPGuiEdit("Table Name").Set tblName
+
+SAPGuiSession("Session").SAPGuiWindow("Data Browser: Initial").SendKey ENTER
+
+objtblFilter.Activate
+
+Set objSAPWindow = objtblFilter.ChildObjects
+
+'------------  Set the Config Value  --------------
+
+If IsObject(objSAPWindow) Then
+	For i = 1 To objSAPWindow.count - 1 Step 1
+		'print objSAPWindow(i).GetROProperty("attachedtext")
+		varAttachedtext =  objSAPWindow(i).GetROProperty("attachedtext")
+		If varAttachedtext = fldName1 Then
+			objSAPWindow(i).Set fldValue1
+			Exit for 
+		End If
+	Next
+End If
+
+objtblFilter.SAPGuiButton("Execute   (F8)").Click
+
+setSAPTableName = true
+
+End Function
+
+
+

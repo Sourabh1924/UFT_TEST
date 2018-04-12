@@ -1,0 +1,4 @@
+﻿<Properties>
+  <WatchEntry0 value="oExec.Status" />
+  <WatchEntry1 value="oExec.Status = 1" />
+</Properties>

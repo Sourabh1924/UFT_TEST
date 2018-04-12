@@ -1,0 +1,34 @@
+ 'intentionally seting devRep object to nothing
+Set devRep = Nothing
+SAPGuiSession("Session").SAPGuiWindow("Display Purchase Req.").Maximize
+Set objTree = SAPGuiSession("Session").SAPGuiWindow("Display Purchase Req.").SAPGuiTree("TableTreeControl")
+Set objShpCrt = SAPGuiSession("Session").SAPGuiWindow("Display Purchase Req.").SAPGuiElement("ImageCtrl")
+
+Set Keyvalues = objTree.Object.GetAllNodeKeys
+objcount = Keyvalues.Count
+
+For i =0 to objcount-1
+
+       currentParent = objTree.Object.GetNodeTextByKey(Keyvalues(i))
+       currentParent = Trim(currentParent)
+       
+       If strcomp(currentParent,strPRno) = 0 Then
+               abs_x = objTree.GetROProperty("abs_x")
+               abs_y = objTree.GetROProperty("abs_y")
+                
+               node_x  = abs_x + 70
+               node_y = abs_y + 25
+               offset = 20
+                                
+               Drop_X = objShpCrt.GetROProperty("abs_x")
+               Drop_Y = objShpCrt.GetROProperty("abs_y")
+                
+               Set devRep = CreateObject( "Mercury.DeviceReplay" )
+                                
+               node_y_withOffset = node_y + i*offset
+                
+               devRep.DragAndDrop node_x,  node_y_withOffset , Drop_X ,  Drop_Y, LEFT_MOUSE_BUTTON
+               msgbox abs_x & "," & node_y_withOffset
+               Exit For         
+       End If
+Next

@@ -1,0 +1,10 @@
+Function f_setAllChkboxOn(ByVal objPage)
+	Set oChildLabel = objPage.ChildObject
+	childCount = oChildLabel.Count
+	For i=0 to childCount-1
+		strClass = oChildLabel(i).getroproperty("micclass")
+		If strcomp(Ucase("SAPGuiCheckBox"),Ucase(strClass)) = 0 Then
+			oChildLabel(i).Set "ON"
+		End If
+	Next
+End Function

@@ -1,0 +1,6 @@
+﻿<Properties>
+  <WatchEntry0 value="&quot;24&quot;" />
+  <WatchEntry1 value="Cell_data" />
+  <WatchEntry2 value="iObj" />
+  <WatchEntry3 value="Browser(&quot;Google Calendar - Week&quot;).Page(&quot;Google Calendar - Week&quot;).WebTable(&quot;S&quot;).ChildItem(Cell_data_row,i,&quot;WebElement&quot;,0)" />
+</Properties>

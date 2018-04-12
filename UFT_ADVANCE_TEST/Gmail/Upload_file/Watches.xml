@@ -1,0 +1,3 @@
+﻿<Properties>
+  <WatchEntry0 value="right(Browser(&quot;My Drive - Google Drive&quot;).Page(&quot;My Drive - Google Drive&quot;).WebElement(&quot;1 upload complete&quot;).GetROProperty(&quot;innertext&quot;) ,len(var) - instrrev(var,&quot; &quot;))" />
+</Properties>

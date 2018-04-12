@@ -1,0 +1,19 @@
+BP-01: Go to http://www.makemytrip.com
+BP-02: Click on "Domestic"
+BP-03: Select "ONE WAY".
+BP-04: Click on From and Type "Departure City".
+BP-05: Click on To and Type "Destination City" .
+BP-06: Click on Departure date Select "Current date". 
+BP-07: Select class "Business".
+BP-08: Select Number of Adult Passenger "2". 
+BP-09: Click on "Search Flight"
+BP-10: Book the First Flight.
+BP-11: Type Email address.
+BP-12: Check I agree option.
+BP-13: Click on "Continue".
+BP-14: Fill the passenger details First name,Last name,Gender for both the passenger.
+BP-15: Type Mobile number. 
+BP-16: Click on "Continue To Payment".
+BP-17: Select "Net banking" payment option.
+BP-18: Select bank "State Bank Of India"
+BP-18: Click on "Make Payment".

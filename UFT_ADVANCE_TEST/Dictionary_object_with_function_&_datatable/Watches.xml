@@ -1,0 +1,4 @@
+﻿<Properties>
+  <WatchEntry0 value="row_count" />
+  <WatchEntry1 value="datatable.Value(&quot;Key&quot;,global)" />
+</Properties>

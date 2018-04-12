@@ -1,0 +1,4 @@
+﻿<Properties>
+  <WatchEntry0 value="Window_obj.WinObject(&quot;Items View_2&quot;).WinList(&quot;Items View&quot;).exist" />
+  <WatchEntry1 value="Item_name" />
+</Properties>

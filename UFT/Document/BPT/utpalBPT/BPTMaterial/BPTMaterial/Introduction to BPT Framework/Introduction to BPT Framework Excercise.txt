@@ -1,0 +1,16 @@
+Excercise 
+1. Go to ALM
+2. Log into the project available for th
+3. Go to Business Components module.
+4. Under the Business Components Tree, create a Folder and name it: "Training"
+5. Right click in the folder just created and select: "Create a New Component"
+6. The Component will be called: "Login"
+7. Under the manual implementation tab, create folllwing steps for this component:
+   1. access to http http://96.226.128.114:11500/mtours/servlet/com.mercurytours.servlet.WelcomeServlet
+   2. Type your username
+   3. Type your Password
+   4. Click Sign-in
+
+Result Expected: Be able to sing-in the Mercury tours website
+
+ 

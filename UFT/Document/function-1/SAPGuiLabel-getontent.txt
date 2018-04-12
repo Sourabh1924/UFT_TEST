@@ -1,0 +1,37 @@
+----------------------------  SAP labels Child Object Get  -------------------------
+
+Set oChildLabel = SAPGuiSession("Session").SAPGuiWindow("Output Controller: List").ChildObjects
+childCount = oChildLabel.Count
+For i=0 to childCount-1
+	strClass = oChildLabel(i).getroproperty("micclass")
+	If strcomp(Ucase("SAPGuiLabel"),Ucase(strClass)) = 0 Then
+		strContent = oChildLabel(i).getroproperty("content")
+		If Instr(1,strContent,strOrderType) > 0 Then
+			intX = oChildLabel(i).getroproperty("abs_x")
+			intY = oChildLabel(i).getroproperty("abs_y")
+			
+			intX = intX + 65
+			
+			Set oDeviceRply = Createobject("Mercury.DeviceReplay")	
+			oDeviceRply.MouseClick intX,intY,LEFT_MOUSE_BUTTON
+			
+			'Display Object List
+			SAPGuiSession("Session").SAPGuiWindow("Output Controller: List").SAPGuiButton("Display contents   (F6)").Click
+			blnFlag = True
+		End If
+	End If
+Next
+
+
+------------------------Sap tab Strip Name extract  -------------------------------
+
+
+strAllItems=SAPGuiSession("micClass:=SAPGuiSession").SAPGuiWindow("micClass:=SAPGuiWindow").SAPGuiTabStrip("micClass:=SAPGuiTabStrip","name:=TABIDT12").GetROProperty("allitems") '//Just update the tabe name here
+arrTabsName=Split(strAllItems,";")' split and get tabs name in array
+'iterate through all tabs
+For i=0 to Ubound(arrTabsName)
+  If Instr(arrTabsName(i),"Account Assignment")>0 Then 
+        SAPGuiSession("micClass:=SAPGuiSession").SAPGuiWindow("micClass:=SAPGuiWindow").SAPGuiTabStrip("micClass:=SAPGuiTabStrip","name:=TABIDT12").Select arrTabsName(i)
+        Exit For
+    End If
+Next

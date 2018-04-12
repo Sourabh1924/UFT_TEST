@@ -1,0 +1,7 @@
+﻿<Properties>
+  <WatchEntry0 value="ucase(childobj1(i).getroproperty(&quot;innertext&quot;))" />
+  <WatchEntry1 value="childobj2.count" />
+  <WatchEntry2 value="str" />
+  <WatchEntry3 value="mid(str,1,9)" />
+  <WatchEntry4 value="childobj3.count" />
+</Properties>

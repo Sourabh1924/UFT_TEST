@@ -1,0 +1,26 @@
+Set obj_Exl=createObject("excel.application")
+obj_Exl.Workbooks.Open "C:\Documents and Settings\yogesh\Desktop\MyTest\test-excel.xlsx"
+obj_Exl.Application.Visible = True
+obj_Exl.DisplayAlerts = false
+colVal = f_getColCount(obj_Exl,"Alpesh2","1")
+Dim i,flag
+MsgBox colVal
+Function f_getColCount(Byref obj_Exl,vsheetName,rowNo)
+			 
+		set obj_sheet = obj_Exl.ActiveWorkbook.Worksheets(vsheetName)
+                flag = true
+		i = 1
+
+		While flag = true						
+
+		usedColVal = obj_sheet.cells(rowNo,i).value
+		      If usedColVal = "" Then
+			f_getColCount = i - 1
+			flag = false
+                      else
+			i = i + 1	
+		      End If						
+
+                Wend
+					
+End Function

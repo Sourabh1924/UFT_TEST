@@ -1,0 +1,33 @@
+Set objSAPSerProcFrame = Browser("SAP CRM - [Proj Bill Milestone").Page("SAP CRM - [Service Process]").SAPFrame("SAP CRM - [Service Process]")
+Set objRANavPage = Browser("Welcome - Rockwell Automation").Page("Welcome - Rockwell Automation")
+'Navigation CRM and Contract Administrator links
+
+        strError = ""
+        blnStatus = ""
+
+        blnStatus = fLinksNav(objRANavPage,"Customer Relationship Mgmt","Customer Care",strError)
+
+    If blnStatus= True Then
+               Call fReportSuccess("Step 1: RA Page Navigation", "Step 1: RA Page Navigated succesfully")
+       Else
+               Call fReportFail("Step 1: RA Page Navigation", "Failed to Navigate [ Captured Reason : " & strError & "]")
+               SystemUtil.CloseDescendentProcesses
+               ExitTest
+       End If
+
+   
+          
+     'Create Service Contract
+
+        strError = ""
+        blnStatus = ""
+       
+       blnstatus = F_ClickLink(objSAPSerProcFrame,"Service Contracts")
+
+       If blnStatus= True Then
+               Call fReportSuccess("Step 3: Click On Search Service Contracts", "Step 3: Click On Search Service Contracts Successfully")
+       Else
+               Call fReportFail("Step 3: Click On Search Service Contracts", "Failed to Click On Search Service Contracts Captured Reason ["&strError&" ]")
+               SystemUtil.CloseDescendentProcesses
+               ExitTest
+       End If

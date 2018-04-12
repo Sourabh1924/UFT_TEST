@@ -1,0 +1,59 @@
+
+'-------------------------------------------------  Function to create excel file and create the sheet as per user suggested names  -------------
+
+
+Function f_createExlFile(path,strFileds)
+'path=Environment.Value("filepath")
+	Set fe = CreateObject("Scripting.FileSystemObject")
+	Set myexl = CreateObject("Excel.Application")
+	If fe.FileExists(path) Then
+'		SystemUtil.CloseProcessByName("EXCEL.EXE")
+		fe.DeleteFile(path)		
+	End If
+	
+	If Not fe.FileExists(path) Then
+'		print "file does not exists"		
+		myexl.Application.Visible = False
+		myexl.Workbooks.Add
+		myexl.ActiveWorkbook.SaveAs path
+		myexl.Workbooks.Open path
+		
+		Set mysheet = myexl.ActiveWorkbook.Worksheets("Sheet1")
+		
+		For k = 0 To ubound(strFileds)
+		mysheet.cells(1,k+1).value = strFileds(k)
+		mysheet.cells(1,k+1).font.bold = True
+		mysheet.cells(1,k+1).Borders.LineStyle = 1
+		mysheet.cells(1,k+1).HorizontalAlignment = -4108
+		Next
+	
+	End If
+	
+	myexl.Rows.AutoFit
+	myexl.Columns.AutoFit
+	myexl.ActiveWorkbook.Save
+	myexl.Application.Quit
+End Function
+
+
+'------------------------------------------------  Function to enter data as per Heading  -------------------------
+
+
+
+Function f_writeToExl(path,arrData)
+
+	Set myexl = CreateObject("Excel.Application")
+	Set myfile = myexl.Workbooks.Open(path)
+	Set mysheet = myfile.Sheets("Sheet1")
+	k = mysheet.UsedRange.Rows.Count
+	
+	For j = 1 To ubound(arrData) + 1
+	index = j - 1
+	mysheet.cells(k+1,j).value=arrData(index)	
+	Next
+	
+	myexl.Rows.AutoFit
+	myexl.Columns.AutoFit
+	myexl.ActiveWorkbook.Save
+	myexl.Application.Quit
+End Function

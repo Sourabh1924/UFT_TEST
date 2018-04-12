@@ -1,0 +1,18 @@
+<YeshaiUpgrade xmlns="Yeshai Upgrade Package">
+  <Upgrade>
+    <Version>
+      <FirstPackage>Yes</FirstPackage>
+      <UpgradeType>YeshaiMainComp</UpgradeType>
+      <NewVersion>Yeshai.57</NewVersion>
+      <OldVersion>Yeshai.50</OldVersion>
+      <UpgradeBaseFolder>C:\Yeshai</UpgradeBaseFolder>
+      <Reboot>No</Reboot>
+      <ExecuteEndSciprt>Upgrade.vbs</ExecuteEndSciprt>
+      <ShutDownServices>Yes</ShutDownServices>
+      <ShutDownXMLFile>SomeFile.XML</ShutDownXMLFile>
+      <ExecuteAfterReboot>Yes</ExecuteAfterReboot>
+      <ExecuteAfterRebootScript>Phase2.vbs</ExecuteAfterRebootScript>
+      <Notes>Just Some Notes About The Package</Notes>
+    </Version>
+  </Upgrade>
+</YeshaiUpgrade>

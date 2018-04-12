@@ -1,0 +1,4 @@
+﻿<Properties>
+  <WatchEntry0 value="environment.Value(&quot;save&quot;)" />
+  <WatchEntry1 value="sum" />
+</Properties>

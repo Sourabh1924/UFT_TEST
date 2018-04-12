@@ -1,0 +1,78 @@
+'//////////////////////////////////////       Function fGetInputData(objxl,objDocIdDic,objPMODic,objInitialDic,objTextDic,strError)   
+
+Function fGetInputData(objxl,objDocIdDic,objPMODic,objInitialDic,objTextDic,strSheetType,Byref strError)
+
+        '---------Variable Declaration
+		Dim i,j
+        Dim intCol
+		Dim intTotalDocId
+		Dim strSheetName
+		Dim cellValue
+		Dim cellArrVal
+		Dim UsedRow
+        '----------- Opening Excel Workbook and Activesheet
+'		objxl.Workbooks.Open "C:\Documents and Settings\yogesh\Desktop\MyTest\test.xls"
+'		objxl.Application.Visible = false
+'		set strSheetName = objxl.ActiveWorkbook.Worksheets(strSheetType)
+
+		'---------------------------------XXXXXXXXX Today's Modifications XXXXXXXX-----------------------
+
+		strSheetPath = "C:\Documents and Settings\yogesh\Desktop\MyTest\test.xls"
+		 'strSheetPath = "C:\Users\ADewang\Desktop\Change-Document-Status and Text\Data\Change_Request_Sheets.xls"
+		 Set xlWBObj = objxl.workbooks.open(strSheetPath) 
+        xlWBObj.Application.Visible = false
+		set strSheetName = objxl.ActiveWorkbook.Worksheets(strSheetType)
+		Set cell= strSheetName.Range("A:A").find("")
+		cellValue = cell.Address
+		print cellValue
+		cellArrVal = split(cellValue,"$")
+		usedRow = cellArrVal(2)
+
+
+		'-------------------------------XXXXXXXXXXXXXXXXXX-------------------------
+        '----------Counting Number of Used Rows and Coloumns
+		intCol =strSheetName.UsedRange.columns.count
+		
+		'----------Start Filling Populated Excel Data into Dictionaries
+		For i=2 to usedRow - 1
+			For j=1 to intCol
+				keyVal=i
+				itemVal=strSheetName.cells(i,j).value
+				
+					If j=1 Then
+						objDocIdDic.Add keyVal,itemVal
+					End If
+					If j=2 Then
+						objPMODic.Add keyVal,itemVal
+					End If
+					If j=3 Then
+						objInitialDic.Add keyVal,itemVal
+					End If
+					If j=4 Then
+						objTextDic.Add keyVal,itemVal
+					End If	
+				
+			Next
+		Next
+
+		'------------Comparing Each of Dictionaries' Items and Passing Boolean Value
+		intTotalDocId = objDocIdDic.count
+		If intTotalDocId = objPMODic.Count and intTotalDocId = objInitialDic.count and intTotalDocId = objTextDic.count Then
+			fGetInputData = True
+			else
+			fGetInputData = False
+			strError = "Data Error: All Fields Value Should be In Equal Range in " & strSheetName
+		End If		
+		
+		'-------saving and closing the Excel file 
+		objxl.ActiveWorkbook.Save
+		objxl.ActiveWorkbook.close
+		objxl.Application.Quit
+		Set sheetName=nothing
+		Set objxl=nothing
+
+  End Function
+
+'------------------------------------------ End of Function --------------------------------
+
+

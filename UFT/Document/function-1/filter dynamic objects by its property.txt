@@ -1,0 +1,23 @@
+'--------------------------- Function for setting values in dynamic objects by its property  ------------------------
+
+Function f_setDynVal(ByVal mainObj,ByVal  strVal,ByVal counter,ByVal classProp,ByVal nameProp)
+tmpVar = counter
+Set oChildLabel = mainObj.ChildObjects
+childCount = oChildLabel.Count
+For i=0 to childCount-1
+	strClass = oChildLabel(i).getroproperty("micclass")
+	strName = oChildLabel(i).getroproperty("name")
+	If (strcomp(Ucase(classProp),Ucase(strClass)) = 0 And strcomp(Ucase(nameProp),Ucase(strName)) = 0) Then	
+		If counter >= 1 Then
+			index = tmpVar - counter
+			oChildLabel(i).Highlight
+			oChildLabel(i).Set strVal(index)	
+			counter = counter - 1
+		Else
+			counter = Null
+			tmpVar = Null
+			Exit for	
+		End If				 
+	End If
+Next
+End Function

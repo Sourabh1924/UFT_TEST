@@ -1,0 +1,4 @@
+﻿<Properties>
+  <WatchEntry0 value="Obj_name.Count" />
+  <WatchEntry1 value="obj.Item(1)" />
+</Properties>

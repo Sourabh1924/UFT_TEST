@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ResourceManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ID>ab1677d0-42b2-4546-9b78-943e1046c3b3</ID>
+  <Name>HPFlights_</Name>
+  <Type>WSDL</Type>
+  <Version>1</Version>
+  <CreationDate>2016-09-19T22:37:52.1508846+05:30</CreationDate>
+  <UpdateDate>2016-09-19T22:37:52.1508846+05:30</UpdateDate>
+  <LoaderID>SignatureResourceHandler</LoaderID>
+  <MetaDataSignatureFile>d5bdca5e-2a86-4722-ab92-7fb7a9752470.xml</MetaDataSignatureFile>
+  <TestResourceId>d5bdca5e-2a86-4722-ab92-7fb7a9752470</TestResourceId>
+  <RepositoryType>TestRepository</RepositoryType>
+  <SignatureCodonId>HP.ST.WebServiceWsdl</SignatureCodonId>
+  <SignatureAddinVersion>12.52.1370.0</SignatureAddinVersion>
+  <Properties>
+    <Item>
+      <Key>
+        <string>RepositoryPath</string>
+      </Key>
+      <Value>
+        <string>C:\Users\Yogesh\Desktop\UFT_API\Weather_center\EmbeddedResources</string>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        <string>ResourceOrigin</string>
+      </Key>
+      <Value>
+        <string>C:\Users\Yogesh\Desktop\UFT_API\Weather_center\EmbeddedResources\HPFlights_</string>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        <string>PrototypeDbVersion</string>
+      </Key>
+      <Value>
+        <string>12.52.1370.0</string>
+      </Value>
+    </Item>
+  </Properties>
+</ResourceManifest>

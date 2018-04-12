@@ -1,0 +1,4 @@
+﻿<Properties>
+  <WatchEntry0 value="len(aaa)" />
+  <WatchEntry1 value="Reporter.ReportPath &amp;&quot;\&quot;&amp; File_name &amp;&quot;.bmp&quot;" />
+</Properties>
